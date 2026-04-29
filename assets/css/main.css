@@ -8606,7 +8606,7 @@ input, select, textarea {
             }
 			#gallery-anchor {
     		position: relative;
-   			top: -40px;
+   			top: 40px;
 			}
 
 		/* Remove lines around contact section */
