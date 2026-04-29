@@ -8604,3 +8604,7 @@ input, select, textarea {
         #contact .inner:before {
             display: none;
             }
+			#gallery-anchor {
+    		position: relative;
+   			top: -80px;
+			}
