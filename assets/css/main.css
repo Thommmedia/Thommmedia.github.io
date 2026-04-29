@@ -8608,3 +8608,17 @@ input, select, textarea {
     		position: relative;
    			top: -60px;
 			}
+
+		/* Remove lines around contact section */
+#contact:before,
+#contact:after,
+#contact .inner:before,
+#contact .inner:after {
+    display: none !important;
+}
+
+/* Remove any borders just in case */
+#contact {
+    border-top: none !important;
+    border-bottom: none !important;
+}
