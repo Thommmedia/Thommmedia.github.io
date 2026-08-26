@@ -83,3 +83,76 @@ body.lightbox-open{overflow:hidden}
   .scene-three .scene-copy{margin-top:0}
   .scene-five .service-line{margin-top:26px}
 }
+
+/* Mobile: give every image its own frame, then place the story below it. */
+@media (max-width:720px){
+  .scene{
+    height:auto;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    background:var(--bg);
+  }
+
+  .scene .scene-image{
+    position:relative;
+    inset:auto;
+    order:1;
+    width:100%;
+    height:clamp(360px,58vh,560px);
+    min-height:360px;
+    flex:none;
+    transform:none;
+    background-size:cover;
+  }
+
+  .scene > .shade{display:none}
+
+  .scene .scene-content{
+    order:2;
+    position:relative;
+    width:100%;
+    height:auto;
+    min-height:0;
+    padding:46px 20px 166px;
+    justify-content:flex-start;
+    transform:none;
+    background:var(--bg);
+  }
+
+  .scene h1,
+  .scene h2{
+    font-size:clamp(48px,14vw,62px);
+    line-height:.9;
+  }
+
+  .scene .overline{margin-bottom:18px}
+  .scene .byline{margin:28px 0 0}
+  .scene .next{margin-top:46px}
+
+  .scene-two .split-content,
+  .scene-four .split-content{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:24px;
+  }
+
+  .scene-copy{
+    width:100%;
+    max-width:none;
+    margin:0;
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  .scene-three .scene-copy{margin-top:0}
+  .scene-five .service-line{margin-top:30px}
+
+  .scene .frame-number{
+    right:20px;
+    bottom:122px;
+  }
+}
