@@ -156,3 +156,21 @@ body.lightbox-open{overflow:hidden}
     bottom:122px;
   }
 }
+
+@media (max-width:720px){
+  .scene .scene-content{
+    margin-top:-92px;
+    padding-top:106px;
+    padding-bottom:132px;
+    background:linear-gradient(
+      180deg,
+      rgba(16,16,15,0) 0,
+      rgba(16,16,15,.84) 72px,
+      var(--bg) 118px
+    );
+  }
+
+  .scene .scene-content::before{
+    content:none;
+  }
+}
