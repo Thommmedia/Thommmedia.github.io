@@ -21,70 +21,7 @@ body.lightbox-open{overflow:hidden}
 .lightbox-close:hover{color:var(--accent);transform:scale(1.08)}
 @media(max-width:720px){.lightbox{padding:60px 18px 24px}.lightbox-image{max-width:100%;max-height:82vh}.lightbox-close{top:15px;right:16px}}
 
-/* Mobile section layout: keep the story together in a calm, readable lower layer. */
-@media (max-width:720px){
-  .scene-two .scene-content,
-  .scene-three .scene-content,
-  .scene-four .scene-content,
-  .scene-five .scene-content{
-    justify-content:flex-end;
-    padding-top:100px;
-    padding-bottom:170px;
-    transform:none;
-  }
-
-  .scene-two .scene-content::before,
-  .scene-three .scene-content::before,
-  .scene-four .scene-content::before,
-  .scene-five .scene-content::before{
-    content:"";
-    position:absolute;
-    left:-20px;
-    right:-20px;
-    bottom:0;
-    height:68%;
-    background:linear-gradient(180deg,rgba(16,16,15,0) 0%,rgba(16,16,15,.24) 24%,rgba(16,16,15,.72) 70%,rgba(16,16,15,.92) 100%);
-    pointer-events:none;
-    z-index:0;
-  }
-
-  .scene-two .scene-content > *,
-  .scene-three .scene-content > *,
-  .scene-four .scene-content > *,
-  .scene-five .scene-content > *{
-    position:relative;
-    z-index:1;
-  }
-
-  .scene-two .split-content,
-  .scene-four .split-content{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:flex-end;
-    gap:24px;
-  }
-
-  .scene h2{
-    font-size:clamp(48px,14vw,59px);
-    line-height:.9;
-  }
-
-  .scene .overline{margin-bottom:18px}
-
-  .scene-copy{
-    width:100%;
-    max-width:36rem;
-    margin:0;
-    font-size:14px;
-    line-height:1.65;
-  }
-
-  .scene-three .scene-copy{margin-top:0}
-  .scene-five .service-line{margin-top:26px}
-}
-
-/* Mobile: give every image its own frame, then place the story below it. */
+/* Mobile: keep each image visually separate from its text while preserving a soft fade. */
 @media (max-width:720px){
   .scene{
     height:auto;
@@ -94,7 +31,6 @@ body.lightbox-open{overflow:hidden}
     overflow:hidden;
     background:var(--bg);
   }
-
   .scene .scene-image{
     position:relative;
     inset:auto;
@@ -106,71 +42,48 @@ body.lightbox-open{overflow:hidden}
     transform:none;
     background-size:cover;
   }
-
   .scene > .shade{display:none}
-
   .scene .scene-content{
     order:2;
     position:relative;
     width:100%;
     height:auto;
     min-height:0;
-    padding:46px 20px 166px;
+    margin-top:-92px;
+    padding:106px 20px 106px;
     justify-content:flex-start;
     transform:none;
-    background:var(--bg);
+    background:linear-gradient(180deg,rgba(16,16,15,0) 0,rgba(16,16,15,.84) 72px,var(--bg) 118px);
   }
-
-  .scene h1,
-  .scene h2{
-    font-size:clamp(48px,14vw,62px);
-    line-height:.9;
-  }
-
-  .scene .overline{margin-bottom:18px}
-  .scene .byline{margin:28px 0 0}
-  .scene .next{margin-top:46px}
-
-  .scene-two .split-content,
-  .scene-four .split-content{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:flex-start;
-    gap:24px;
-  }
-
-  .scene-copy{
-    width:100%;
-    max-width:none;
-    margin:0;
-    font-size:14px;
-    line-height:1.7;
-  }
-
-  .scene-three .scene-copy{margin-top:0}
-  .scene-five .service-line{margin-top:30px}
-
-  .scene .frame-number{
-    right:20px;
-    bottom:122px;
-  }
+  .scene .scene-content::before{content:none}
 }
 
-@media (max-width:720px){
-  .scene .scene-content{
-    margin-top:-92px;
-    padding-top:106px;
-    padding-bottom:132px;
-    background:linear-gradient(
-      180deg,
-      rgba(16,16,15,0) 0,
-      rgba(16,16,15,.84) 72px,
-      var(--bg) 118px
-    );
-  }
+/* Final spacing pass: slightly larger portfolio rail and balanced mobile story spacing. */
+.portfolio-rail{
+  height:148px;
+  padding:18px 42px 22px;
+}
+.rail-track a{
+  width:104px;
+  height:82px;
+}
+.frame-number{bottom:177px;}
 
-  .scene .scene-content::before{
-    content:none;
+@media (max-width:720px){
+  .portfolio-rail{
+    height:138px;
+    padding:16px 20px 18px;
+    gap:16px;
+  }
+  .rail-track a{
+    width:92px;
+    height:72px;
+  }
+  .frame-number{bottom:160px;}
+  .scene .scene-content{
+    --story-gap:84px;
+    margin-top:calc(var(--story-gap) * -1);
+    padding-top:var(--story-gap);
+    padding-bottom:var(--story-gap);
   }
 }
