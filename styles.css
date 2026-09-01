@@ -7,8 +7,8 @@
 .scene-one .scene-image{background-image:url('assets/web/hero-f1-new.jpg')}.scene-two .scene-image{background-image:url('assets/web/formula-pulse-new.jpg')}
 .scene-four{height:100vh;min-height:650px}.scene-four .scene-image{background-position:center bottom}
 @media(max-width:720px){.scene-four{height:100vh;min-height:680px}}
-.scene-two .split-content{display:flex;flex-direction:column;align-items:flex-start;gap:35px}
-@media(max-width:720px){.scene-two .split-content{gap:22px}}
+.scene-two .split-content, .scene-four .split-content {display:flex;flex-direction:column;align-items:flex-start;gap:35px}
+@media(max-width:720px){.scene-two .split-content, .scene-four .split-content {gap:22px}}
 .wordmark{display:inline-block;font-size:20px;letter-spacing:.13em;padding-bottom:3px;border-bottom:1px solid var(--accent)}.wordmark span{color:inherit;font:inherit;letter-spacing:inherit;margin-left:0}
 .scene-one .scene-content{transform:translateY(-30px)}
 .header nav a{font-size:11px}
@@ -95,6 +95,30 @@ body.lightbox-open{overflow:hidden}
   .scene-three .scene-content > *,
   .scene-four .scene-content > *,
   .scene-five .scene-content > *{
-    transform:translateY(40px);
+    transform:translateY(35px);
   }
+}
+
+.lightbox-prev, .lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: var(--muted);
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 20px;
+  transition: color .2s ease, transform .2s ease;
+  z-index: 101;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover, .lightbox-next:hover {
+  color: var(--accent);
+  transform: translateY(-50%) scale(1.08);
+}
+@media(max-width:720px) {
+  .lightbox-prev { left: 5px; }
+  .lightbox-next { right: 5px; }
 }
