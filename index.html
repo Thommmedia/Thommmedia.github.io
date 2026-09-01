@@ -50,7 +50,7 @@
     <section id="contact" class="contact scene-six"><div class="shell contact-content"><p class="overline">Have a project in mind?</p><h2>Let's<br><em>collaborate.</em></h2><a class="email" href="mailto:thomasvasperen@outlook.com">thomasvasperen@outlook.com <span>↗</span></a></div><p class="frame-number">06 / 06</p></section>
   </main>
 
-  <aside class="portfolio-rail" aria-label="More portfolio images"><div class="rail-label"><span>Latest work</span><small>Scroll</small></div><div class="rail-track">
+  <aside class="portfolio-rail" aria-label="More portfolio images"><div class="rail-label"><span>Scroll</span></div><div class="rail-track">
     <a href="assets/web/rail/rail-01-9u3a1249.jpg"><img src="assets/web/rail/rail-01-9u3a1249.jpg" alt="Race cars in the pit garage"></a>
     <a href="assets/web/rail/rail-02-9u3a9655.jpg"><img src="assets/web/rail/rail-02-9u3a9655.jpg" alt="Racing tyres and pit equipment"></a>
     <a href="assets/web/rail/rail-03-9u3a1001-2.jpg"><img src="assets/web/rail/rail-03-9u3a1001-2.jpg" alt="Red GT race car in motion"></a>
@@ -82,6 +82,8 @@
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded portfolio image" hidden>
     <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous image">←</button>
+    <button class="lightbox-next" type="button" aria-label="Next image">→</button>
     <img class="lightbox-image" src="" alt="">
   </div>
 
@@ -92,7 +94,12 @@
       const lightbox = document.getElementById('lightbox');
       const lightboxImage = lightbox.querySelector('.lightbox-image');
       const closeButton = lightbox.querySelector('.lightbox-close');
+      const prevButton = lightbox.querySelector('.lightbox-prev');
+      const nextButton = lightbox.querySelector('.lightbox-next');
       let lastTrigger;
+      let currentIndex = 0;
+      
+      const links = Array.from(document.querySelectorAll('.rail-track a'));
 
       const closeLightbox = () => {
         lightbox.classList.remove('is-open');
@@ -103,13 +110,19 @@
         if (lastTrigger) lastTrigger.focus();
       };
 
-      document.querySelectorAll('.rail-track a').forEach((link) => {
+      const updateLightbox = (index) => {
+        currentIndex = index;
+        const link = links[currentIndex];
+        const thumbnail = link.querySelector('img');
+        lightboxImage.src = link.href;
+        lightboxImage.alt = thumbnail ? thumbnail.alt : '';
+      };
+
+      links.forEach((link, index) => {
         link.addEventListener('click', (event) => {
           event.preventDefault();
           lastTrigger = link;
-          const thumbnail = link.querySelector('img');
-          lightboxImage.src = link.href;
-          lightboxImage.alt = thumbnail ? thumbnail.alt : '';
+          updateLightbox(index);
           lightbox.hidden = false;
           document.body.classList.add('lightbox-open');
           requestAnimationFrame(() => lightbox.classList.add('is-open'));
@@ -117,12 +130,31 @@
         });
       });
 
+      const showPrev = (e) => {
+        if (e) e.stopPropagation();
+        const newIndex = (currentIndex === 0) ? links.length - 1 : currentIndex - 1;
+        updateLightbox(newIndex);
+      };
+
+      const showNext = (e) => {
+        if (e) e.stopPropagation();
+        const newIndex = (currentIndex === links.length - 1) ? 0 : currentIndex + 1;
+        updateLightbox(newIndex);
+      };
+
+      prevButton.addEventListener('click', showPrev);
+      nextButton.addEventListener('click', showNext);
       closeButton.addEventListener('click', closeLightbox);
+      
       lightbox.addEventListener('click', (event) => {
         if (event.target === lightbox) closeLightbox();
       });
+      
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+        if (!lightbox.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showPrev();
+        if (event.key === 'ArrowRight') showNext();
       });
     })();
   </script>
