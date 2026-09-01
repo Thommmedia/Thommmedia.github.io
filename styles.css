@@ -58,32 +58,43 @@ body.lightbox-open{overflow:hidden}
   .scene .scene-content::before{content:none}
 }
 
-/* Final spacing pass: slightly larger portfolio rail and balanced mobile story spacing. */
+/* Final spacing pass: larger portfolio rail and shorter, softer mobile story spacing. */
 .portfolio-rail{
-  height:148px;
-  padding:18px 42px 22px;
+  height:158px;
+  padding:18px 42px 24px;
 }
 .rail-track a{
-  width:104px;
-  height:82px;
+  width:112px;
+  height:88px;
 }
-.frame-number{bottom:177px;}
+.frame-number{bottom:187px;}
 
 @media (max-width:720px){
   .portfolio-rail{
-    height:138px;
-    padding:16px 20px 18px;
+    height:148px;
+    padding:16px 20px 20px;
     gap:16px;
   }
   .rail-track a{
-    width:92px;
-    height:72px;
+    width:102px;
+    height:80px;
   }
-  .frame-number{bottom:160px;}
+  .frame-number{bottom:170px;}
   .scene .scene-content{
-    --story-gap:84px;
+    --story-gap:58px;
     margin-top:calc(var(--story-gap) * -1);
     padding-top:var(--story-gap);
     padding-bottom:var(--story-gap);
+  }
+}
+
+/* Mobile text alignment: center the copy inside each black story panel. */
+@media (max-width:720px){
+  .scene-one .scene-content > *,
+  .scene-two .scene-content > *,
+  .scene-three .scene-content > *,
+  .scene-four .scene-content > *,
+  .scene-five .scene-content > *{
+    transform:translateY(40px);
   }
 }
