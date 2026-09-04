@@ -125,3 +125,9 @@ body.lightbox-open{overflow:hidden}
   .lightbox-prev { left: 5px; }
   .lightbox-next { right: 5px; }
 }
+@media (max-width: 720px) {
+  .header {
+    background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0.88) 50%, rgba(10, 10, 9, 0) 100%);
+    border-bottom: none;
+  }
+}
