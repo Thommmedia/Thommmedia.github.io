@@ -261,3 +261,12 @@ body.lightbox-open{overflow:hidden}
     border-bottom: none;
   }
 }
+.footer {
+  margin-bottom: 160px;
+}
+
+@media (max-width: 720px) {
+  .footer {
+    margin-bottom: 150px;
+  }
+}
