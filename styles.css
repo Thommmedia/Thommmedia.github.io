@@ -85,7 +85,7 @@ body.lightbox-open{overflow:hidden}
 
 .rail-label {margin-bottom: 40px;}
 
-.rail-next {background: none;border: none;color: var(--muted);font-size: 28px;cursor: pointer;padding: 0 0 0 10px;margin-bottom: 40px; transition: color .2s ease, transform .2s ease;}
+.rail-next {background: none;border: none;color: var(--muted);font-size: 28px;cursor: pointer;padding: 0 0 0 10px;margin-bottom: 40px; transition: color .2s ease, transform .2s ease; pointer-events: auto;}
 .rail-next:hover {color: var(--accent);transform: translateX(4px);}
 
 .footer {margin-bottom: 160px;}
