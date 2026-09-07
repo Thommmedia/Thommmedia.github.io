@@ -129,4 +129,20 @@ body.lightbox-open{overflow:hidden}
   .lightbox-prev { left: 5px; }
   .lightbox-next { right: 5px; }
   .rail-next {display: none;}
+
+  /* Maakt de knoppen bovenin iets groter en geeft de letters een eigen schaduw */
+.header nav a {
+  font-size: 13px; 
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Creëert de zachte transparante zwarte gloed achter dat 'stukje' van de site op desktop (mobiel heeft al een zwarte balk) */
+@media (min-width: 721px) {
+  .header nav {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 75%);
+    padding: 20px 40px;
+    margin-right: -40px; /* Zorgt dat de uitlijning met de rechterkant van je site intact blijft */
+    border-radius: 50%;
+  }
+}
 }
