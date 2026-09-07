@@ -168,7 +168,14 @@
       const railTrack = document.querySelector('.rail-track');
       if (railNext && railTrack) {
         railNext.addEventListener('click', () => {
-          railTrack.scrollBy({ left: 400, behavior: 'smooth' });
+          // Check of we (bijna) aan het einde van de galerij zijn
+          if (railTrack.scrollLeft + railTrack.clientWidth >= railTrack.scrollWidth - 10) {
+            // Zo ja: ga soepel helemaal terug naar het begin
+            railTrack.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            // Zo nee: scroll gewoon een stukje verder naar rechts
+            railTrack.scrollBy({ left: 400, behavior: 'smooth' });
+          }
         });
       }
     })();
