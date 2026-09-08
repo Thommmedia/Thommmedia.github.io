@@ -53,6 +53,84 @@ body.lightbox-open{overflow:hidden}
   margin: 0;
   transition: color .2s ease, transform .2s ease;
   pointer-events: auto;
+  transform: none !important; /* Forceer dat ze niet meer schuin staan */
+}
+.rail-next:hover { color: var(--accent); transform: translateY(4px) !important; }
+.rail-prev:hover { color: var(--accent); transform: translateY(-4px) !important; }
+
+/* Verberg deze pijltjes op mobiel */
+@media (max-width: 720px) {
+  .rail-next, .rail-prev { display: none; }
+}
+
+/* DESKTOP: VERTICALE BALK RECHTS */
+@media (min-width: 721px) {
+  /* De main container krimpt in om plek te maken voor de galerij zodat Contact en footer vrij blijven */
+  .shell {
+    padding-right: 200px;
+  }
+  .frame-number {
+    right: 200px;
+  }
+  
+  .portfolio-rail {
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 450px; /* Ruimte voor de fade naar links */
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; 
+    /* Fade aangepast: lang massief, en loopt daarna vloeiend uit tot 300px naar links */
+    background: linear-gradient(270deg, rgba(10,10,9,1) 0%, rgba(10,10,9,0.95) 150px, rgba(10,10,9,0.3) 300px, rgba(10,10,9,0) 100%);
+    padding: 100px 42px 40px; /* Extra marge bovenin zodat hij nooit over de top-menu's heen kruipt */
+    gap: 15px;
+  }
+  .rail-label { 
+    margin-bottom: 0; 
+    text-align: center;
+    width: 112px;
+  }
+  .rail-track {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    width: 112px;
+    align-items: center;
+    max-height: 60vh;
+  }
+  .rail-track a {
+    width: 112px;
+    height: 88px;
+    flex: none;
+  }
+  .rail-next, .rail-prev { 
+    width: 112px;
+    text-align: center;
+  }
+}
+/* Lightbox pijltjes */
+.lightbox-prev, .lightbox-next {
+  position: absolute;top: 50%;transform: translateY(-50%);background: none;color: var(--muted);border: none;font-size: 32px;cursor: pointer;padding: 20px;transition: color .2s ease, transform .2s ease;z-index: 101;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover, .lightbox-next:hover { color: var(--accent); transform: translateY(-50%) scale(1.08); }
+
+/* Basic gallery pijltjes styling */
+.rail-next, .rail-prev {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 0;
+  margin: 0;
+  transition: color .2s ease, transform .2s ease;
+  pointer-events: auto;
 }
 .rail-next:hover { color: var(--accent); transform: translateY(4px); }
 .rail-prev:hover { color: var(--accent); transform: translateY(-4px); }
