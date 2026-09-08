@@ -149,3 +149,34 @@ body.lightbox-open{overflow:hidden}
 .header nav a {
   font-size: 13px; 
 }
+
+@media (min-width: 721px) {
+  .portfolio-rail {
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 170px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(270deg, rgba(10,10,9,.98) 0%, rgba(10,10,9,.88) 50%, rgba(10,10,9,0) 100%);
+    padding: 40px 20px;
+    gap: 20px;
+  }
+  .rail-label, .rail-next { margin-bottom: 0; text-align: center; }
+  .rail-label { order: 1; }
+  .rail-track {
+    order: 2;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    width: 100%;
+    align-items: center;
+    padding-right: 5px;
+  }
+  .rail-next { order: 3; transform: rotate(90deg); margin-top: 10px; }
+  .rail-next:hover { transform: rotate(90deg) translateX(4px); }
+}
+
