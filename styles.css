@@ -734,42 +734,22 @@ body.lightbox-open {
    ========================================================= */
 
 @media (min-width: 721px) {
-
-    /*
-       Reserve space on the right for the vertical gallery.
-       The actual gallery is wider than this so its gradient
-       can fade much further into the main image.
-    */
-
-    .shell {
-        padding-right: 210px;
-    }
-
-    .frame-number {
-        right: 210px;
-    }
-
     .portfolio-rail {
         top: 0;
         right: 0;
         bottom: 0;
         left: auto;
 
-        width: 320px;
+        width: 380px;
         height: 100vh;
 
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
 
-        padding: 40px 42px;
-
+        padding: 40px 28px;
         gap: 15px;
 
-        /*
-           Solid black on the right, gradually fading
-           much further into the main image on the left.
-        */
         background:
             linear-gradient(
                 270deg,
@@ -783,15 +763,13 @@ body.lightbox-open {
     }
 
     .rail-label {
-        width: 112px;
-
+        width: 168px;
         margin-bottom: 0;
-
         text-align: center;
     }
 
     .rail-track {
-        width: 112px;
+        width: 168px;
 
         flex-direction: column;
         align-items: center;
@@ -805,18 +783,15 @@ body.lightbox-open {
     }
 
     .rail-track a {
-        width: 112px;
-        height: 88px;
-
+        width: 168px;
+        height: 132px;
         flex: none;
     }
 
     .rail-next,
     .rail-prev {
-        width: 112px;
-
+        width: 168px;
         text-align: center;
-
         transform: none;
     }
 
