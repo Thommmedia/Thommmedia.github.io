@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 <body>
   <header class="header shell">
@@ -17,7 +17,7 @@
   </header>
 
   <aside class="portfolio-rail" aria-label="More portfolio images">
-    <button class="rail-prev" type="button" aria-label="Scroll gallery up">↑</button>
+    <button class="rail-prev" type="button" aria-label="Scroll gallery up">&uarr;</button>
     <div class="rail-label"><span>Latest work</span><small>Scroll</small></div>
     <div class="rail-track">
       <a href="assets/web/rail/rail-01-9u3a1249.jpg"><img src="assets/web/rail/rail-01-9u3a1249.jpg" alt="Race cars in the pit garage"></a>
@@ -48,13 +48,13 @@
       <a href="assets/web/rail/rail-26-9u3a1975.jpg"><img src="assets/web/rail/rail-26-9u3a1975.jpg" alt="Red GT race car on track"></a>
       <a href="assets/web/rail/rail-27-9u3a0296-4.jpg"><img src="assets/web/rail/rail-27-9u3a0296-4.jpg" alt="Red endurance race car in motion"></a>
     </div>
-    <button class="rail-next" type="button" aria-label="Scroll gallery down">↓</button>
+    <button class="rail-next" type="button" aria-label="Scroll gallery down">&darr;</button>
   </aside>
 
   <main id="top">
     <section class="hero scene scene-one">
       <div class="scene-image"></div><div class="shade"></div>
-      <div class="shell scene-content"><p class="overline">Creative media &amp; content</p><h1>Content that<br><em>stands out.</em></h1><p class="byline">by Thomas van Asperen</p><a class="next" href="#work">Scroll to explore <span>↓</span></a></div>
+      <div class="shell scene-content"><p class="overline">Creative media &amp; content</p><h1>Content that<br><em>stands out.</em></h1><p class="byline">by Thomas van Asperen</p><a class="next" href="#work">Scroll to explore <span>&darr;</span></a></div>
       <p class="frame-number">01 / 06</p>
     </section>
 
@@ -82,13 +82,13 @@
       <p class="frame-number">05 / 06</p>
     </section>
 
-    <section id="contact" class="contact scene-six"><div class="shell contact-content"><p class="overline">Have a project in mind?</p><h2>Let's<br><em>collaborate.</em></h2><a class="email" href="mailto:thomasvasperen@outlook.com">thomasvasperen@outlook.com <span>↗</span></a></div><p class="frame-number">06 / 06</p></section>
+    <section id="contact" class="contact scene-six"><div class="shell contact-content"><p class="overline">Have a project in mind?</p><h2>Let's<br><em>collaborate.</em></h2><a class="email" href="mailto:thomasvasperen@outlook.com">thomasvasperen@outlook.com <span>&nearr;</span></a></div><p class="frame-number">06 / 06</p></section>
   </main>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded portfolio image" hidden>
-    <button class="lightbox-close" type="button" aria-label="Close image">×</button>
-    <button class="lightbox-prev" type="button" aria-label="Previous image">←</button>
-    <button class="lightbox-next" type="button" aria-label="Next image">→</button>
+    <button class="lightbox-close" type="button" aria-label="Close image">&times;</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous image">&larr;</button>
+    <button class="lightbox-next" type="button" aria-label="Next image">&rarr;</button>
     <img class="lightbox-image" src="" alt="">
   </div>
 
@@ -162,6 +162,7 @@
         if (event.key === 'ArrowRight') showNext();
       });
 
+      // Pijltjes slim aansturen (Zowel Next als Prev)
       const railNext = document.querySelector('.rail-next');
       const railPrev = document.querySelector('.rail-prev');
       const railTrack = document.querySelector('.rail-track');
