@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=fresh" />
 </head>
 <body>
   <header class="header shell">
@@ -17,8 +17,8 @@
   </header>
 
   <aside class="portfolio-rail" aria-label="More portfolio images">
-    <div class="rail-label"><span>Latest work</span><small>Scroll</small></div>
     <button class="rail-prev" type="button" aria-label="Scroll gallery up">↑</button>
+    <div class="rail-label"><span>Latest work</span><small>Scroll</small></div>
     <div class="rail-track">
       <a href="assets/web/rail/rail-01-9u3a1249.jpg"><img src="assets/web/rail/rail-01-9u3a1249.jpg" alt="Race cars in the pit garage"></a>
       <a href="assets/web/rail/rail-02-9u3a9655.jpg"><img src="assets/web/rail/rail-02-9u3a9655.jpg" alt="Racing tyres and pit equipment"></a>
@@ -162,7 +162,7 @@
         if (event.key === 'ArrowRight') showNext();
       });
 
-      // Pijltjes slim aansturen (Zowel Next als Prev)
+      // Pijltjes aansturen
       const railNext = document.querySelector('.rail-next');
       const railPrev = document.querySelector('.rail-prev');
       const railTrack = document.querySelector('.rail-track');
@@ -170,9 +170,9 @@
       if (railNext && railTrack) {
         railNext.addEventListener('click', () => {
           if (window.innerWidth > 720) {
-            railTrack.scrollBy({ top: 300, behavior: 'smooth' });
+            railTrack.scrollBy({ top: 350, behavior: 'smooth' });
           } else {
-            railTrack.scrollBy({ left: 300, behavior: 'smooth' });
+            railTrack.scrollBy({ left: 350, behavior: 'smooth' });
           }
         });
       }
@@ -180,9 +180,9 @@
       if (railPrev && railTrack) {
         railPrev.addEventListener('click', () => {
           if (window.innerWidth > 720) {
-            railTrack.scrollBy({ top: -300, behavior: 'smooth' });
+            railTrack.scrollBy({ top: -350, behavior: 'smooth' });
           } else {
-            railTrack.scrollBy({ left: -300, behavior: 'smooth' });
+            railTrack.scrollBy({ left: -350, behavior: 'smooth' });
           }
         });
       }
