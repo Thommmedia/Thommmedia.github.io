@@ -735,8 +735,6 @@ body.lightbox-open {
 
 @media (min-width: 721px) {
 
-    /* ---------- Portfolio rail ---------- */
-
     .portfolio-rail {
         top: 0;
         right: 0;
@@ -754,29 +752,21 @@ body.lightbox-open {
         gap: 15px;
 
         background:
-    linear-gradient(
-        270deg,
-        rgba(10, 10, 9, 0.80) 0%,
-        rgba(10, 10, 9, 0.80) 82%,
-        rgba(10, 10, 9, 0.45) 91%,
-        rgba(10, 10, 9, 0.12) 98%,
-        rgba(10, 10, 9, 0) 100%
-    );
+            linear-gradient(
+                90deg,
+                rgba(10, 10, 9, 0) 0%,
+                rgba(10, 10, 9, 0) 88.5%,
+                rgba(10, 10, 9, 0.35) 91%,
+                rgba(10, 10, 9, 0.80) 93.5%,
+                rgba(10, 10, 9, 0.80) 100%
+            );
     }
-
-
-    /* ---------- Gallery label ---------- */
 
     .rail-label {
         width: 168px;
-
         margin-bottom: 0;
-
         text-align: center;
     }
-
-
-    /* ---------- Gallery thumbnails ---------- */
 
     .rail-track {
         width: 168px;
@@ -795,19 +785,13 @@ body.lightbox-open {
     .rail-track a {
         width: 168px;
         height: 132px;
-
         flex: none;
     }
-
-
-    /* ---------- Gallery arrows ---------- */
 
     .rail-next,
     .rail-prev {
         width: 168px;
-
         text-align: center;
-
         transform: none;
     }
 
@@ -818,9 +802,6 @@ body.lightbox-open {
     .rail-prev:hover {
         transform: translateY(-3px);
     }
-
-
-    /* ---------- Header navigation ---------- */
 
     .header nav {
         margin-right: 430px;
