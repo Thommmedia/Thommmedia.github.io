@@ -734,39 +734,50 @@ body.lightbox-open {
    ========================================================= */
 
 @media (min-width: 721px) {
+
+    /* ---------- Portfolio rail ---------- */
+
     .portfolio-rail {
         top: 0;
         right: 0;
         bottom: 0;
         left: auto;
 
-        width: 380px;
+        width: 430px;
         height: 100vh;
 
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
 
-        padding: 40px 28px;
+        padding: 30px 28px;
         gap: 15px;
 
         background:
             linear-gradient(
                 270deg,
                 rgba(10, 10, 9, 0.99) 0%,
-                rgba(10, 10, 9, 0.96) 28%,
-                rgba(10, 10, 9, 0.78) 50%,
-                rgba(10, 10, 9, 0.42) 70%,
-                rgba(10, 10, 9, 0.16) 86%,
+                rgba(10, 10, 9, 0.97) 30%,
+                rgba(10, 10, 9, 0.82) 52%,
+                rgba(10, 10, 9, 0.48) 70%,
+                rgba(10, 10, 9, 0.20) 86%,
                 rgba(10, 10, 9, 0) 100%
             );
     }
 
+
+    /* ---------- Gallery label ---------- */
+
     .rail-label {
         width: 168px;
+
         margin-bottom: 0;
+
         text-align: center;
     }
+
+
+    /* ---------- Gallery thumbnails ---------- */
 
     .rail-track {
         width: 168px;
@@ -774,7 +785,7 @@ body.lightbox-open {
         flex-direction: column;
         align-items: center;
 
-        max-height: 60vh;
+        max-height: 68vh;
 
         overflow-y: auto;
         overflow-x: hidden;
@@ -785,13 +796,19 @@ body.lightbox-open {
     .rail-track a {
         width: 168px;
         height: 132px;
+
         flex: none;
     }
+
+
+    /* ---------- Gallery arrows ---------- */
 
     .rail-next,
     .rail-prev {
         width: 168px;
+
         text-align: center;
+
         transform: none;
     }
 
@@ -801,6 +818,13 @@ body.lightbox-open {
 
     .rail-prev:hover {
         transform: translateY(-3px);
+    }
+
+
+    /* ---------- Header navigation ---------- */
+
+    .header nav {
+        margin-right: 430px;
     }
 }
 
