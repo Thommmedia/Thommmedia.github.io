@@ -1,656 +1,192 @@
-:root {
-  --bg: #10100f;
-  --fg: #f4f2ed;
-  --muted: rgba(244, 242, 237, .68);
-  --accent: #d9ff49;
-  --line: rgba(244, 242, 237, .22);
-  --max: 1280px;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thommmedia — Creative media and content by Thomas van Asperen." />
+  <title>Thommmedia — Thomas van Asperen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=14" />
+</head>
+<body>
+  <header class="header shell">
+    <a class="wordmark" href="#top">THOMMMEDIA</a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
 
-* { box-sizing: border-box; }
+  <aside class="portfolio-rail" aria-label="More portfolio images">
+    <button class="rail-prev" type="button" aria-label="Scroll gallery up">↑</button>
+    <div class="rail-label"><span>Latest work</span><small>Scroll</small></div>
+    <div class="rail-track">
+      <a href="assets/web/rail/rail-01-9u3a1249.jpg"><img src="assets/web/rail/rail-01-9u3a1249.jpg" alt="Race cars in the pit garage"></a>
+      <a href="assets/web/rail/rail-02-9u3a9655.jpg"><img src="assets/web/rail/rail-02-9u3a9655.jpg" alt="Racing tyres and pit equipment"></a>
+      <a href="assets/web/rail/rail-03-9u3a1001-2.jpg"><img src="assets/web/rail/rail-03-9u3a1001-2.jpg" alt="Red GT race car in motion"></a>
+      <a href="assets/web/rail/rail-04-03.jpg"><img src="assets/web/rail/rail-04-03.jpg" alt="Formula 1 cars racing at Zandvoort"></a>
+      <a href="assets/web/rail/rail-05-9u3a2294-4.jpg"><img src="assets/web/rail/rail-05-9u3a2294-4.jpg" alt="Spa-Francorchamps circuit from above"></a>
+      <a href="assets/web/rail/rail-06-9u3a9774-2.jpg"><img src="assets/web/rail/rail-06-9u3a9774-2.jpg" alt="Close-up of a race car cockpit"></a>
+      <a href="assets/web/rail/rail-07-9u3a4396-3.jpg"><img src="assets/web/rail/rail-07-9u3a4396-3.jpg" alt="Formula Student car in motion"></a>
+      <a href="assets/web/rail/rail-08-9u3a1498.jpg"><img src="assets/web/rail/rail-08-9u3a1498.jpg" alt="Green BMW race car through a corner"></a>
+      <a href="assets/web/rail/rail-09-9u3a0085-5.jpg"><img src="assets/web/rail/rail-09-9u3a0085-5.jpg" alt="Aston Martin race car on track"></a>
+      <a href="assets/web/rail/rail-10-9u3a9809.jpg"><img src="assets/web/rail/rail-10-9u3a9809.jpg" alt="Race car in the paddock"></a>
+      <a href="assets/web/rail/rail-11-9u3a1673-2.jpg"><img src="assets/web/rail/rail-11-9u3a1673-2.jpg" alt="Cars through Eau Rouge at Spa"></a>
+      <a href="assets/web/rail/rail-12-9u3a1944.jpg"><img src="assets/web/rail/rail-12-9u3a1944.jpg" alt="Red Porsche race car in motion"></a>
+      <a href="assets/web/rail/rail-13-9u3a1261.jpg"><img src="assets/web/rail/rail-13-9u3a1261.jpg" alt="Touring cars in the garage"></a>
+      <a href="assets/web/rail/rail-14-9u3a0560-2.jpg"><img src="assets/web/rail/rail-14-9u3a0560-2.jpg" alt="Aston Martin race car in motion"></a>
+      <a href="assets/web/rail/rail-15-9u3a4936.jpg"><img src="assets/web/rail/rail-15-9u3a4936.jpg" alt="Formula Student car in motion"></a>
+      <a href="assets/web/rail/rail-16-9u3a2855.jpg"><img src="assets/web/rail/rail-16-9u3a2855.jpg" alt="Two race cars chasing through a corner"></a>
+      <a href="assets/web/rail/rail-17-9u3a9160-3.jpg"><img src="assets/web/rail/rail-17-9u3a9160-3.jpg" alt="Formula Student car at sunset"></a>
+      <a href="assets/web/rail/rail-18-9u3a9668.jpg"><img src="assets/web/rail/rail-18-9u3a9668.jpg" alt="Race car bodywork in the paddock"></a>
+      <a href="assets/web/rail/rail-19-9u3a2828.jpg"><img src="assets/web/rail/rail-19-9u3a2828.jpg" alt="GT cars on the Zandvoort track"></a>
+      <a href="assets/web/rail/rail-20-9u3a0718.jpg"><img src="assets/web/rail/rail-20-9u3a0718.jpg" alt="Race car on the Spa pit straight"></a>
+      <a href="assets/web/rail/rail-21-9u3a9857-2.jpg"><img src="assets/web/rail/rail-21-9u3a9857-2.jpg" alt="Crowd overlooking the Spa-Francorchamps circuit"></a>
+      <a href="assets/web/rail/rail-22-9u3a9683.jpg"><img src="assets/web/rail/rail-22-9u3a9683.jpg" alt="Yellow endurance race car in the garage"></a>
+      <a href="assets/web/rail/rail-23-9u3a1201.jpg"><img src="assets/web/rail/rail-23-9u3a1201.jpg" alt="Race pit lane from above"></a>
+      <a href="assets/web/rail/rail-24-9u3a4226-2.jpg"><img src="assets/web/rail/rail-24-9u3a4226-2.jpg" alt="Formula Student car detail"></a>
+      <a href="assets/web/rail/rail-25-9u3a1444.jpg"><img src="assets/web/rail/rail-25-9u3a1444.jpg" alt="Aston Martin Valkyrie race car"></a>
+      <a href="assets/web/rail/rail-26-9u3a1975.jpg"><img src="assets/web/rail/rail-26-9u3a1975.jpg" alt="Red GT race car on track"></a>
+      <a href="assets/web/rail/rail-27-9u3a0296-4.jpg"><img src="assets/web/rail/rail-27-9u3a0296-4.jpg" alt="Red endurance race car in motion"></a>
+    </div>
+    <button class="rail-next" type="button" aria-label="Scroll gallery down">↓</button>
+  </aside>
 
-html { scroll-behavior: smooth; }
+  <main id="top">
+    <section class="hero scene scene-one">
+      <div class="scene-image"></div><div class="shade"></div>
+      <div class="shell scene-content"><p class="overline">Creative media &amp; content</p><h1>Content that<br><em>stands out.</em></h1><p class="byline">by Thomas van Asperen</p><a class="next" href="#work">Scroll to explore <span>↓</span></a></div>
+      <p class="frame-number">01 / 06</p>
+    </section>
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: Manrope, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-}
+    <section id="work" class="scene scene-two">
+      <div class="scene-image"></div><div class="shade"></div>
+      <div class="shell scene-content split-content"><div><p class="overline">Sports &amp; motion</p><h2>Every frame<br>has a <em>pulse.</em></h2></div><p class="scene-copy">I focus on capturing the intensity of sport: from high-speed action to the small details that make a moment feel alive. Whether it's motorsport, team dynamics or the environment around it, I aim to tell the full story through every frame.</p></div>
+      <p class="frame-number">02 / 06</p>
+    </section>
 
-.shell {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding-left: 42px;
-  padding-right: 42px;
-}
+    <section class="scene scene-three">
+      <div class="scene-image"></div><div class="shade"></div>
+      <div class="shell scene-content"><p class="overline">Cinematic style</p><h2>More than a<br><em>document.</em></h2><p class="scene-copy">My work is defined by a cinematic, high-energy style. I look for unique angles, strong compositions and dynamic lighting to create images that feel immersive and powerful.</p></div>
+      <p class="frame-number">03 / 06</p>
+    </section>
 
-.header {
-  height: 86px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--line);
-}
+    <section id="about" class="scene scene-four">
+      <div class="scene-image"></div><div class="shade"></div>
+      <div class="shell scene-content split-content"><div><p class="overline">About me</p><h2>Speed,<br>emotion &amp;<br><em>atmosphere.</em></h2></div><p class="scene-copy">My journey into photography started years ago with a borrowed camera during the 24 Hours of Le Mans. What began as curiosity quickly turned into a passion. I further developed my skills while working with FS Team Delft — the perfect combination between my interest in sports and content creation.</p></div>
+      <p class="frame-number">04 / 06</p>
+    </section>
 
-.wordmark {
-  color: var(--fg);
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-decoration: none;
-  display: inline-block;
-  padding-bottom: 3px;
-  border-bottom: 1px solid var(--accent);
-}
+    <section class="scene scene-five">
+      <div class="scene-image"></div><div class="shade"></div>
+      <div class="shell scene-content"><p class="overline">What I do</p><h2>Made for<br><em>the moment.</em></h2><div class="service-line"><span>Sports photography</span><span>Motorsport coverage</span><span>Event coverage</span><span>Content creation</span><span>Editing &amp; post-production</span><span>Creative direction</span></div></div>
+      <p class="frame-number">05 / 06</p>
+    </section>
 
-.wordmark span {
-  color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
-  margin-left: 0;
-}
+    <section id="contact" class="contact scene-six"><div class="shell contact-content"><p class="overline">Have a project in mind?</p><h2>Let's<br><em>collaborate.</em></h2><a class="email" href="mailto:thomasvasperen@outlook.com">thomasvasperen@outlook.com <span>↗</span></a></div><p class="frame-number">06 / 06</p></section>
+  </main>
 
-.header nav {
-  display: flex;
-  gap: 28px;
-}
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded portfolio image" hidden>
+    <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous image">←</button>
+    <button class="lightbox-next" type="button" aria-label="Next image">→</button>
+    <img class="lightbox-image" src="" alt="">
+  </div>
 
-.header nav a, .footer a {
-  color: var(--fg);
-  font: 11px 'DM Mono', monospace; /* Ietsje groter volgens originele fix */
-  letter-spacing: .08em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
+  <footer class="footer shell"><span>© 2026 Thommmedia</span><div><a href="https://instagram.com/thommmedia">Instagram</a><a href="https://www.linkedin.com/in/thomasvasperen">LinkedIn</a></div></footer>
 
-.header nav a:hover, .footer a:hover {
-  color: var(--accent);
-}
+  <script>
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = lightbox.querySelector('.lightbox-image');
+      const closeButton = lightbox.querySelector('.lightbox-close');
+      const prevButton = lightbox.querySelector('.lightbox-prev');
+      const nextButton = lightbox.querySelector('.lightbox-next');
+      let lastTrigger;
+      let currentIndex = 0;
+      
+      const links = Array.from(document.querySelectorAll('.rail-track a'));
 
-.scene {
-  height: 100vh;
-  min-height: 650px;
-  position: relative;
-  overflow: hidden;
-}
+      const closeLightbox = () => {
+        lightbox.classList.remove('is-open');
+        document.body.classList.remove('lightbox-open');
+        window.setTimeout(() => {
+          if (!lightbox.classList.contains('is-open')) lightbox.hidden = true;
+        }, 220);
+        if (lastTrigger) lastTrigger.focus();
+      };
 
-.scene-image {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-size: cover;
-  transform: scale(1.02);
-}
+      const updateLightbox = (index) => {
+        currentIndex = index;
+        const link = links[currentIndex];
+        const thumbnail = link.querySelector('img');
+        lightboxImage.src = link.href;
+        lightboxImage.alt = thumbnail ? thumbnail.alt : '';
+      };
 
-.scene-one .scene-image { background-image: url('assets/web/hero-f1-new.jpg'); }
-.scene-two .scene-image { background-image: url('assets/web/formula-pulse-new.jpg'); }
-.scene-three .scene-image { background-image: url('assets/web/dtm-document.jpg'); }
-.scene-four .scene-image { background-image: url('assets/web/spa-atmosphere.jpg'); }
-.scene-five .scene-image { background-image: url('assets/web/spa-moment.jpg'); }
+      links.forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          lastTrigger = link;
+          updateLightbox(index);
+          lightbox.hidden = false;
+          document.body.classList.add('lightbox-open');
+          requestAnimationFrame(() => lightbox.classList.add('is-open'));
+          closeButton.focus();
+        });
+      });
 
-.scene-four {
-  height: 100vh;
-  min-height: 650px;
-}
-.scene-four .scene-image {
-  background-position: center bottom;
-}
+      const showPrev = (e) => {
+        if (e) e.stopPropagation();
+        const newIndex = (currentIndex === 0) ? links.length - 1 : currentIndex - 1;
+        updateLightbox(newIndex);
+      };
 
-.shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(6,6,6,.78) 0%, rgba(6,6,6,.37) 43%, rgba(6,6,6,.08) 100%);
-}
+      const showNext = (e) => {
+        if (e) e.stopPropagation();
+        const newIndex = (currentIndex === links.length - 1) ? 0 : currentIndex + 1;
+        updateLightbox(newIndex);
+      };
 
-.scene-two .shade, .scene-four .shade {
-  background: linear-gradient(90deg, rgba(6,6,6,.65), rgba(6,6,6,.18) 65%, rgba(6,6,6,.4));
-}
+      prevButton.addEventListener('click', showPrev);
+      nextButton.addEventListener('click', showNext);
+      closeButton.addEventListener('click', closeLightbox);
+      
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      
+      document.addEventListener('keydown', (event) => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showPrev();
+        if (event.key === 'ArrowRight') showNext();
+      });
 
-.scene-content {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 65px;
-}
-
-.scene-one .scene-content { transform: translateY(-30px); }
-.scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content { transform: translateY(-90px); }
-
-.overline, .frame-number, .rail-label, .service-line {
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.overline {
-  color: var(--accent);
-  margin: 0 0 28px;
-}
-
-.scene h1, h2 {
-  font-size: clamp(58px, 8.5vw, 124px);
-  font-weight: 500;
-  letter-spacing: -.085em;
-  line-height: .88;
-  margin: 0;
-}
-
-.scene h1 em, h2 em {
-  font-family: Georgia, serif;
-  color: var(--accent);
-  font-weight: 400;
-  letter-spacing: -.09em;
-}
-
-.byline {
-  color: var(--muted);
-  margin: 30px 0 65px;
-}
-
-.next {
-  color: var(--fg);
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: .1em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.next span {
-  color: var(--accent);
-  font-size: 18px;
-  margin-left: 12px;
-}
-
-.frame-number {
-  position: absolute;
-  right: 42px;
-  bottom: 145px;
-  color: var(--fg);
-  z-index: 2;
-}
-
-.split-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 90px;
-  align-items: end;
-}
-
-.scene-two .split-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 35px;
-}
-
-.scene-copy {
-  max-width: 420px;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.75;
-  margin: 0 0 4px;
-}
-
-.scene-three .scene-copy {
-  margin-top: 35px;
-}
-
-.service-line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 26px;
-  max-width: 540px;
-  color: var(--fg);
-  margin-top: 46px;
-}
-
-.service-line span {
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 6px;
-}
-
-/* --- Contact Blok --- */
-.contact {
-  height: 100vh;
-  min-height: 650px;
-  position: relative;
-  background: var(--accent);
-  color: #111;
-}
-
-.contact-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.contact .overline, .contact .frame-number {
-  color: #111;
-}
-
-.contact h2 {
-  color: #111;
-}
-
-.contact h2 em {
-  color: #111;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 8px;
-}
-
-.email {
-  color: #111;
-  font-size: clamp(18px, 2.4vw, 30px);
-  text-decoration: none;
-  border-bottom: 1px solid #111;
-  padding-bottom: 7px;
-  margin-top: 58px;
-  width: max-content;
-}
-
-.email span {
-  margin-left: 12px;
-}
-
-/* --- Footer --- */
-.footer {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--muted);
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.footer div {
-  display: flex;
-  gap: 22px;
-}
-
-.footer a {
-  color: var(--muted);
-}
-
-/* --- Lightbox --- */
-body.lightbox-open { overflow: hidden; }
-.lightbox[hidden] { display: none; }
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(24px, 5vw, 72px);
-  background: rgba(9, 9, 8, .94);
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .22s ease, visibility .22s ease;
-}
-
-.lightbox.is-open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox-image {
-  display: block;
-  max-width: 94vw;
-  max-height: 88vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, .45);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 22px;
-  right: 32px;
-  border: 0;
-  background: none;
-  color: var(--fg);
-  font: 32px/1 Arial, sans-serif;
-  cursor: pointer;
-  padding: 4px 8px;
-  transition: color .2s ease, transform .2s ease;
-}
-
-.lightbox-close:hover {
-  color: var(--accent);
-  transform: scale(1.08);
-}
-
-.lightbox-prev, .lightbox-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  color: var(--muted);
-  border: none;
-  font-size: 32px;
-  cursor: pointer;
-  padding: 20px;
-  transition: color .2s ease, transform .2s ease;
-  z-index: 101;
-}
-
-.lightbox-prev { left: 20px; }
-.lightbox-next { right: 20px; }
-
-.lightbox-prev:hover, .lightbox-next:hover { 
-  color: var(--accent); 
-  transform: translateY(-50%) scale(1.08); 
-}
-
-/* --- Desktop Rail (Vertical) --- */
-@media (min-width: 721px) {
-  /* Zorgt dat content nooit botst met de galerij (breedte rail: 280px incl padding) */
-  .shell {
-    padding-right: 320px;
-  }
-  .frame-number {
-    right: 320px;
-  }
-  
-  .portfolio-rail {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: auto;
-    right: 0;
-    width: 252px; /* Op basis van 168px img + (42px padding rechts + 42px padding links) */
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centreert content in de 252px */
-    background: rgba(10, 10, 9, 0.8); /* Vaste 80% donkere achtergrond */
-    padding: 40px 42px;
-    gap: 15px;
-    z-index: 20;
-    pointer-events: none;
-  }
-
-  /* Het Pseudo element voor de fade die strak 5px naast de foto's begint */
-  .portfolio-rail::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -150px; /* Bepaalt hoe ver de fade naar links de pagina in vloeit */
-    width: 150px;
-    /* De fade start massief zwart (0.8) strak aan de rand en vloeit uit naar transparant */
-    background: linear-gradient(270deg, rgba(10, 10, 9, 0.8) 0%, rgba(10, 10, 9, 0) 100%);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .rail-track, .rail-next, .rail-prev {
-    pointer-events: auto;
-  }
-
-  .rail-label { 
-    margin-bottom: 0; 
-    text-align: center;
-    width: 168px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: var(--fg);
-    flex: none;
-    padding-bottom: 2px;
-  }
-  
-  .rail-label small {
-    color: var(--muted);
-    font-size: 9px;
-  }
-
-  .rail-track {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-    width: 168px; /* 1.5x groter (origineel was 112px) */
-    align-items: center;
-    max-height: 60vh;
-  }
-  
-  .rail-track::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .rail-track a {
-    width: 168px; /* 1.5x groter */
-    height: 132px; /* 1.5x groter (origineel was 88px) */
-    position: relative;
-    display: block;
-    flex: none;
-    scroll-snap-align: start;
-    overflow: hidden;
-    border: 1px solid transparent;
-  }
-  
-  .rail-track a:hover {
-    border-color: var(--accent);
-  }
-  
-  .rail-track img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(.35);
-    transition: filter .25s, transform .25s;
-  }
-  
-  .rail-track a:hover img {
-    filter: grayscale(0);
-    transform: scale(1.06);
-  }
-
-  /* Knoppen vormgegeven identiek aan Lightbox */
-  .rail-next, .rail-prev {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 32px; /* Zelfde fontgrootte als Lightbox pijlen */
-    cursor: pointer;
-    padding: 10px 0;
-    margin: 0;
-    width: 168px;
-    text-align: center;
-    transition: color .2s ease, transform .2s ease;
-  }
-  
-  .rail-next:hover, .rail-prev:hover { 
-    color: var(--accent); 
-  }
-  
-  /* Lichte bounce animatie bij de pijltjes */
-  .rail-prev:hover { transform: translateY(-4px) scale(1.08); }
-  .rail-next:hover { transform: translateY(4px) scale(1.08); }
-}
-
-/* --- Mobile Layout Fixes --- */
-@media (max-width: 720px) {
-  .shell {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .header {
-    height: 70px;
-  }
-  .header nav {
-    gap: 15px;
-  }
-  .header nav a:nth-child(2) {
-    display: none;
-  }
-  .scene, .contact {
-    min-height: 680px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    background: var(--bg);
-  }
-  .scene-content {
-    padding-top: 30px;
-    padding-bottom: 150px;
-  }
-  .scene h1, h2, .contact h2 {
-    font-size: 59px;
-  }
-  .split-content {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-    justify-content: center;
-  }
-  .scene-two .split-content {
-    gap: 22px;
-  }
-  .scene-copy {
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  .scene-three .scene-copy {
-    margin-top: 22px;
-  }
-  .frame-number {
-    right: 20px;
-    bottom: 142px;
-  }
-  .service-line {
-    margin-top: 35px;
-    gap: 10px 16px;
-    line-height: 1.5;
-  }
-  .scene .scene-image {
-    position: relative;
-    inset: auto;
-    order: 1;
-    width: 100%;
-    height: clamp(360px, 58vh, 560px);
-    min-height: 360px;
-    flex: none;
-    transform: none;
-    background-size: cover;
-  }
-  .scene > .shade {
-    display: none;
-  }
-  .scene .scene-content {
-    order: 2;
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    margin-top: -92px;
-    padding: 106px 20px 106px;
-    justify-content: flex-start;
-    transform: none;
-    background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.84) 72px, var(--bg) 118px);
-  }
-  .scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
-    transform: none;
-  }
-  .header {
-    background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0.88) 50%, rgba(10, 10, 9, 0) 100%);
-    border-bottom: none;
-  }
-
-  /* Horizontale mobiele galerij onderaan */
-  .portfolio-rail {
-    position: fixed;
-    z-index: 20;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    padding: 13px 20px 14px;
-    display: flex;
-    align-items: end;
-    gap: 12px;
-    background: linear-gradient(0deg, rgba(10,10,9,.98) 0%, rgba(10,10,9,.88) 72%, rgba(10,10,9,0) 100%);
-    pointer-events: none;
-  }
-  .rail-label {
-    width: 83px;
-    font-size: 9px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: var(--fg);
-    flex: none;
-    padding-bottom: 2px;
-  }
-  .rail-label small {
-    color: var(--muted);
-    font-size: 9px;
-  }
-  
-  /* Verberg pijltjes op mobiel */
-  .rail-next, .rail-prev { display: none; }
-
-  .rail-track {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    pointer-events: auto;
-    padding-bottom: 1px;
-    width: auto;
-  }
-  .rail-track::-webkit-scrollbar {
-    display: none;
-  }
-  .rail-track a {
-    width: 67px;
-    height: 54px;
-    position: relative;
-    display: block;
-    flex: none;
-    scroll-snap-align: start;
-    overflow: hidden;
-    border: 1px solid transparent;
-  }
-  .rail-track img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .footer {
-    height: auto;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .footer div {
-    order: 3;
-    width: 100%;
-  }
-}
+      // Pijltjes aansturen
+      const railNext = document.querySelector('.rail-next');
+      const railPrev = document.querySelector('.rail-prev');
+      const railTrack = document.querySelector('.rail-track');
+      
+      if (railNext && railTrack) {
+        railNext.addEventListener('click', () => {
+          if (window.innerWidth > 720) {
+            railTrack.scrollBy({ top: 350, behavior: 'smooth' });
+          } else {
+            railTrack.scrollBy({ left: 350, behavior: 'smooth' });
+          }
+        });
+      }
+      
+      if (railPrev && railTrack) {
+        railPrev.addEventListener('click', () => {
+          if (window.innerWidth > 720) {
+            railTrack.scrollBy({ top: -350, behavior: 'smooth' });
+          } else {
+            railTrack.scrollBy({ left: -350, behavior: 'smooth' });
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
