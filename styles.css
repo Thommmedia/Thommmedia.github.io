@@ -1,1075 +1,605 @@
-/* =========================================================
-   THOMMMEDIA — STYLES
-   ========================================================= */
-
-
-/* =========================================================
-   1. VARIABLES & RESET
-   ========================================================= */
-
 :root {
-    --bg: #10100f;
-    --fg: #f4f2ed;
-    --muted: rgba(244, 242, 237, 0.68);
-    --accent: #d9ff49;
-    --line: rgba(244, 242, 237, 0.22);
-    --max: 1280px;
+  --bg: #10100f;
+  --fg: #f4f2ed;
+  --muted: rgba(244, 242, 237, .68);
+  --accent: #d9ff49;
+  --line: rgba(244, 242, 237, .22);
+  --max: 1280px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: Manrope, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
 }
-
-
-/* =========================================================
-   2. GENERAL LAYOUT
-   ========================================================= */
 
 .shell {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding-left: 42px;
-    padding-right: 42px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: 42px;
+  padding-right: 42px;
 }
 
-
-/* =========================================================
-   3. HEADER
-   ========================================================= */
-
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-
-    height: 86px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-bottom: 1px solid var(--line);
+  height: 86px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
 }
 
 .wordmark {
-    display: inline-block;
+  color: var(--fg);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-decoration: none;
+}
 
-    color: var(--fg);
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-decoration: none;
-
-    padding-bottom: 3px;
-    border-bottom: 1px solid var(--accent);
+.wordmark span {
+  color: var(--muted);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .2em;
+  margin-left: 7px;
 }
 
 .header nav {
-    display: flex;
-    gap: 28px;
+  display: flex;
+  gap: 28px;
 }
 
-.header nav a,
-.footer a {
-    color: var(--fg);
-
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    transition: color 0.2s ease;
+.header nav a, .footer a {
+  color: var(--fg);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.header nav a:hover,
-.footer a:hover {
-    color: var(--accent);
+.header nav a:hover, .footer a:hover {
+  color: var(--accent);
 }
-
-
-/* =========================================================
-   4. FULL-SCREEN SCENES
-   ========================================================= */
 
 .scene {
-    position: relative;
-
-    height: 100vh;
-    min-height: 650px;
-
-    overflow: hidden;
+  height: 100vh;
+  min-height: 650px;
+  position: relative;
+  overflow: hidden;
 }
 
 .scene-image {
-    position: absolute;
-    inset: 0;
-
-    background-position: center;
-    background-size: cover;
-
-    transform: scale(1.02);
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.02);
 }
 
+.scene-one .scene-image { background-image: url('assets/web/hero-f1-new.jpg'); }
+.scene-two .scene-image { background-image: url('assets/web/formula-pulse-new.jpg'); }
+.scene-three .scene-image { background-image: url('assets/web/dtm-document.jpg'); }
+.scene-four .scene-image { background-image: url('assets/web/spa-atmosphere.jpg'); }
+.scene-five .scene-image { background-image: url('assets/web/spa-moment.jpg'); }
 
-/* =========================================================
-   5. SCENE IMAGES
-   ========================================================= */
-
-.scene-one .scene-image {
-    background-image: url('assets/web/hero-f1-new.jpg');
+.scene-four {
+  height: 100vh;
+  min-height: 650px;
 }
-
-.scene-two .scene-image {
-    background-image: url('assets/web/formula-pulse-new.jpg');
-}
-
-.scene-three .scene-image {
-    background-image: url('assets/web/dtm-document.jpg');
-}
-
 .scene-four .scene-image {
-    background-image: url('assets/web/spa-atmosphere.jpg');
-    background-position: center bottom;
+  background-position: center bottom;
 }
-
-.scene-five .scene-image {
-    background-image: url('assets/web/spa-moment.jpg');
-}
-
-
-/* =========================================================
-   6. IMAGE SHADING
-   ========================================================= */
 
 .shade {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(6, 6, 6, 0.78) 0%,
-            rgba(6, 6, 6, 0.37) 43%,
-            rgba(6, 6, 6, 0.08) 100%
-        );
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(6,6,6,.78) 0%, rgba(6,6,6,.37) 43%, rgba(6,6,6,.08) 100%);
 }
 
-.scene-two .shade,
-.scene-four .shade {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(6, 6, 6, 0.65) 0%,
-            rgba(6, 6, 6, 0.18) 65%,
-            rgba(6, 6, 6, 0.4) 100%
-        );
+.scene-two .shade, .scene-four .shade {
+  background: linear-gradient(90deg, rgba(6,6,6,.65), rgba(6,6,6,.18) 65%, rgba(6,6,6,.4));
 }
-
-
-/* =========================================================
-   7. SCENE CONTENT
-   ========================================================= */
 
 .scene-content {
-    position: relative;
-    z-index: 1;
-
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding-top: 65px;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 65px;
 }
 
 .scene-one .scene-content {
-    transform: translateY(-30px);
+  transform: translateY(-30px);
 }
 
-.scene-two .scene-content,
-.scene-three .scene-content,
-.scene-four .scene-content {
-    transform: translateY(-90px);
+.scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
+  transform: translateY(-90px);
 }
 
-
-/* =========================================================
-   8. TYPOGRAPHY
-   ========================================================= */
-
-.overline,
-.frame-number,
-.rail-label,
-.service-line {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
+.overline, .frame-number, .rail-label, .service-line {
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .13em;
+  text-transform: uppercase;
 }
 
 .overline {
-    color: var(--accent);
-    margin: 0 0 28px;
+  color: var(--accent);
+  margin: 0 0 28px;
 }
 
-.scene h1,
-.scene h2 {
-    margin: 0;
-
-    font-size: clamp(58px, 8.5vw, 124px);
-    font-weight: 500;
-    letter-spacing: -0.085em;
-    line-height: 0.88;
+.scene h1, h2 {
+  font-size: clamp(58px, 8.5vw, 124px);
+  font-weight: 500;
+  letter-spacing: -.085em;
+  line-height: .88;
+  margin: 0;
 }
 
-.scene h1 em,
-.scene h2 em {
-    color: var(--accent);
-
-    font-family: Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.09em;
+.scene h1 em, h2 em {
+  font-family: Georgia, serif;
+  color: var(--accent);
+  font-weight: 400;
+  letter-spacing: -.09em;
 }
 
 .byline {
-    color: var(--muted);
-    margin: 30px 0 65px;
+  color: var(--muted);
+  margin: 30px 0 65px;
 }
 
 .next {
-    color: var(--fg);
-
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    text-transform: uppercase;
+  color: var(--fg);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .next span {
-    color: var(--accent);
-    font-size: 18px;
-    margin-left: 12px;
+  color: var(--accent);
+  font-size: 18px;
+  margin-left: 12px;
 }
 
-
-/* =========================================================
-   9. SPLIT CONTENT
-   ========================================================= */
+.frame-number {
+  position: absolute;
+  right: 42px;
+  bottom: 145px;
+  color: var(--fg);
+  z-index: 2;
+}
 
 .split-content {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-    gap: 90px;
-
-    align-items: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: end;
 }
 
 .scene-two .split-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 35px;
 }
 
 .scene-copy {
-    max-width: 420px;
-
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.75;
-
-    margin: 0 0 4px;
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0 0 4px;
 }
 
 .scene-three .scene-copy {
-    margin-top: 35px;
+  margin-top: 35px;
 }
 
-
-/* =========================================================
-   10. SERVICES
-   ========================================================= */
-
 .service-line {
-    display: flex;
-    flex-wrap: wrap;
-
-    max-width: 540px;
-
-    color: var(--fg);
-
-    gap: 12px 26px;
-    margin-top: 46px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+  max-width: 540px;
+  color: var(--fg);
+  margin-top: 46px;
 }
 
 .service-line span {
-    padding-bottom: 6px;
-
-    border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
 }
 
-
-/* =========================================================
-   11. FRAME NUMBERS
-   ========================================================= */
-
-.frame-number {
-    position: absolute;
-
-    right: 210px;
-    bottom: 145px;
-
-    z-index: 2;
-
-    color: var(--fg);
-}
-
-
-/* =========================================================
-   12. CONTACT SECTION
-   ========================================================= */
-
+/* Contact Sectie Correctie */
 .contact {
-    position: relative;
-
-    height: 100vh;
-    min-height: 650px;
-
-    background: var(--accent);
-    color: #111;
+  height: 100vh;
+  min-height: 650px;
+  position: relative;
+  background: var(--accent);
+  color: #111;
 }
 
 .contact-content {
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact .overline {
-    color: #111;
+  color: #111;
 }
 
 .contact h2 {
-    color: #111;
+  color: #111;
+  font-size: clamp(58px, 8.5vw, 124px);
+  font-weight: 500;
+  letter-spacing: -.085em;
+  line-height: .88;
+  margin: 0;
 }
 
 .contact h2 em {
-    color: #111;
-
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 8px;
+  color: #111;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.09em;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
 }
 
 .email {
-    width: max-content;
-
-    color: #111;
-
-    font-size: clamp(18px, 2.4vw, 30px);
-    text-decoration: none;
-
-    margin-top: 58px;
-    padding-bottom: 7px;
-
-    border-bottom: 1px solid #111;
+  color: #111;
+  font-size: clamp(18px, 2.4vw, 30px);
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 7px;
+  margin-top: 58px;
+  width: max-content;
 }
 
 .email span {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
 .contact .frame-number {
-    color: #111;
+  color: #111;
 }
 
-
-/* =========================================================
-   13. PORTFOLIO RAIL — GENERAL
-   ========================================================= */
-
-.portfolio-rail {
-    position: fixed;
-    z-index: 20;
-
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    height: 116px;
-
-    display: flex;
-    align-items: flex-end;
-
-    gap: 27px;
-
-    padding: 16px 42px 18px;
-
-    background:
-        linear-gradient(
-            0deg,
-            rgba(10, 10, 9, 0.99) 0%,
-            rgba(10, 10, 9, 0.96) 58%,
-            rgba(10, 10, 9, 0.72) 82%,
-            rgba(10, 10, 9, 0.18) 100%
-        );
-
-    pointer-events: none;
-}
-
-.rail-label {
-    width: 105px;
-
-    display: flex;
-    flex-direction: column;
-
-    flex: none;
-
-    gap: 5px;
-
-    color: var(--fg);
-
-    padding-bottom: 2px;
-}
-
-.rail-label small {
-    color: var(--muted);
-    font-size: 9px;
-}
-
-.rail-track {
-    display: flex;
-
-    gap: 10px;
-
-    overflow-x: auto;
-
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-
-    pointer-events: auto;
-
-    padding-bottom: 1px;
-}
-
-.rail-track::-webkit-scrollbar {
-    display: none;
-}
-
-.rail-track a {
-    position: relative;
-
-    display: block;
-
-    width: 78px;
-    height: 62px;
-
-    flex: none;
-
-    overflow: hidden;
-
-    border: 1px solid transparent;
-
-    scroll-snap-align: start;
-}
-
-.rail-track a:hover {
-    border-color: var(--accent);
-}
-
-.rail-track img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    filter: grayscale(0.35);
-
-    transition:
-        filter 0.25s ease,
-        transform 0.25s ease;
-}
-
-.rail-track a:hover img {
-    filter: grayscale(0);
-    transform: scale(1.06);
-}
-
-.rail-track span {
-    position: absolute;
-
-    right: 5px;
-    bottom: 3px;
-
-    color: var(--fg);
-
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-
-    text-shadow: 0 1px 4px #000;
-}
-
-
-/* =========================================================
-   14. PORTFOLIO RAIL ARROWS
-   ========================================================= */
-
-.rail-next,
-.rail-prev {
-    width: 112px;
-
-    margin: 0;
-    padding: 5px 0;
-
-    border: none;
-    background: none;
-
-    color: var(--muted);
-
-    font-family: 'DM Mono', monospace;
-    font-size: 24px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    pointer-events: auto;
-
-    transform: none;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.rail-next:hover {
-    color: var(--accent);
-    transform: translateY(3px);
-}
-
-.rail-prev:hover {
-    color: var(--accent);
-    transform: translateY(-3px);
-}
-
-
-/* =========================================================
-   15. FOOTER
-   ========================================================= */
-
+/* Footer */
 .footer {
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    color: var(--muted);
-
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .footer div {
-    display: flex;
-    gap: 22px;
+  display: flex;
+  gap: 22px;
 }
 
 .footer a {
-    color: var(--muted);
+  color: var(--muted);
 }
 
-
-/* =========================================================
-   16. LIGHTBOX
-   ========================================================= */
-
+/* Lightbox */
 body.lightbox-open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .lightbox[hidden] {
-    display: none;
+  display: none;
 }
 
 .lightbox {
-    position: fixed;
-    inset: 0;
-
-    z-index: 100;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: clamp(24px, 5vw, 72px);
-
-    background: rgba(9, 9, 8, 0.94);
-
-    backdrop-filter: blur(10px);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 0.22s ease,
-        visibility 0.22s ease;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 72px);
+  background: rgba(9, 9, 8, .94);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .22s ease, visibility .22s ease;
 }
 
 .lightbox.is-open {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .lightbox-image {
-    display: block;
-
-    width: auto;
-    height: auto;
-
-    max-width: 94vw;
-    max-height: 88vh;
-
-    object-fit: contain;
-
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  display: block;
+  max-width: 94vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .45);
 }
 
 .lightbox-close {
-    position: absolute;
-
-    top: 22px;
-    right: 32px;
-
-    padding: 4px 8px;
-
-    border: none;
-    background: none;
-
-    color: var(--fg);
-
-    font-family: Arial, sans-serif;
-    font-size: 32px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+  position: absolute;
+  top: 22px;
+  right: 32px;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  font: 32px/1 Arial, sans-serif;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color .2s ease, transform .2s ease;
 }
 
 .lightbox-close:hover {
-    color: var(--accent);
-    transform: scale(1.08);
+  color: var(--accent);
+  transform: scale(1.08);
 }
 
-.lightbox-prev,
-.lightbox-next {
-    position: absolute;
-    top: 50%;
-
-    z-index: 101;
-
-    padding: 20px;
-
-    border: none;
-    background: none;
-
-    color: var(--muted);
-
-    font-size: 32px;
-
-    cursor: pointer;
-
-    transform: translateY(-50%);
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+.lightbox-prev, .lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: var(--muted);
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 20px;
+  transition: color .2s ease, transform .2s ease;
+  z-index: 101;
 }
 
-.lightbox-prev {
-    left: 20px;
-}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover, .lightbox-next:hover { color: var(--accent); transform: translateY(-50%) scale(1.08); }
 
-.lightbox-next {
-    right: 20px;
-}
-
-.lightbox-prev:hover,
-.lightbox-next:hover {
-    color: var(--accent);
-    transform: translateY(-50%) scale(1.08);
-}
-
-
-/* =========================================================
-   17. DESKTOP — 721PX AND UP
-   ========================================================= */
-
+/* DESKTOP: Vaste verticale zijbalk rechts + schone uitlijning */
 @media (min-width: 721px) {
+  .shell {
+    padding-right: 220px;
+  }
+  .frame-number {
+    right: 220px;
+  }
+  
+  .portfolio-rail {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 220px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background: linear-gradient(270deg, rgba(10,10,9,.98) 0%, rgba(10,10,9,.88) 72%, rgba(10,10,9,0) 100%);
+    padding: 40px 42px;
+    gap: 15px;
+    z-index: 20;
+    pointer-events: none;
+  }
 
-    .portfolio-rail {
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: auto;
+  .rail-track, .rail-next, .rail-prev {
+    pointer-events: auto;
+  }
 
-        width: 430px;
-        height: 100vh;
+  .rail-label { 
+    margin-bottom: 0; 
+    text-align: center;
+    width: 112px;
+  }
+  
+  .rail-track {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    width: 112px;
+    align-items: center;
+    max-height: 60vh;
+  }
+  
+  .rail-track::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .rail-track a {
+    width: 112px;
+    height: 88px;
+    position: relative;
+    display: block;
+    flex: none;
+    scroll-snap-align: start;
+    overflow: hidden;
+    border: 1px solid transparent;
+  }
+  
+  .rail-track a:hover {
+    border-color: var(--accent);
+  }
+  
+  .rail-track img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(.35);
+    transition: filter .25s, transform .25s;
+  }
+  
+  .rail-track a:hover img {
+    filter: grayscale(0);
+    transform: scale(1.06);
+  }
 
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-
-        padding: 30px 28px;
-        gap: 15px;
-
-        background:
-            linear-gradient(
-                90deg,
-                rgba(10, 10, 9, 0) 0%,
-                rgba(10, 10, 9, 0) 88.5%,
-                rgba(10, 10, 9, 0.35) 91%,
-                rgba(10, 10, 9, 0.80) 93.5%,
-                rgba(10, 10, 9, 0.80) 100%
-            );
-    }
-
-    .rail-label {
-        width: 168px;
-        margin-bottom: 0;
-        text-align: center;
-    }
-
-    .rail-track {
-        width: 168px;
-
-        flex-direction: column;
-        align-items: center;
-
-        max-height: 68vh;
-
-        overflow-y: auto;
-        overflow-x: hidden;
-
-        scroll-snap-type: y mandatory;
-    }
-
-    .rail-track a {
-        width: 168px;
-        height: 132px;
-        flex: none;
-    }
-
-    .rail-next,
-    .rail-prev {
-        width: 168px;
-        text-align: center;
-        transform: none;
-    }
-
-    .rail-next:hover {
-        transform: translateY(3px);
-    }
-
-    .rail-prev:hover {
-        transform: translateY(-3px);
-    }
-
-    .header nav {
-        margin-right: 430px;
-    }
+  .rail-next, .rail-prev {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 0;
+    margin: 0;
+    width: 112px;
+    text-align: center;
+    transition: color .2s ease, transform .2s ease;
+    transform: none !important;
+  }
+  
+  .rail-next:hover { color: var(--accent); transform: translateY(4px) !important; }
+  .rail-prev:hover { color: var(--accent); transform: translateY(-4px) !important; }
 }
 
-/* =========================================================
-   18. MOBILE — 720PX AND BELOW
-   ========================================================= */
-
+/* MOBIELE STIJLEN */
 @media (max-width: 720px) {
-
-    /* ---------- General ---------- */
-
-    .shell {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-
-    /* ---------- Header ---------- */
-
-    .header {
-        height: 70px;
-
-        border-bottom: none;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(10, 10, 9, 0.98) 0%,
-                rgba(10, 10, 9, 0.88) 50%,
-                rgba(10, 10, 9, 0) 100%
-            );
-    }
-
-    .header nav {
-        gap: 15px;
-    }
-
-    .header nav a:nth-child(2) {
-        display: none;
-    }
-
-
-    /* ---------- Scenes ---------- */
-
-    .scene,
-    .contact {
-        min-height: 680px;
-    }
-
-    .scene {
-        height: auto;
-
-        display: flex;
-        flex-direction: column;
-
-        overflow: hidden;
-
-        background: var(--bg);
-    }
-
-    .scene .scene-image {
-        position: relative;
-        inset: auto;
-
-        order: 1;
-
-        width: 100%;
-        height: clamp(360px, 58vh, 560px);
-        min-height: 360px;
-
-        flex: none;
-
-        background-size: cover;
-
-        transform: none;
-    }
-
-    /*
-       On mobile the dark gradient is created below
-       the image instead of over the image.
-    */
-    .scene > .shade {
-        display: none;
-    }
-
-    .scene .scene-content {
-        position: relative;
-        z-index: 1;
-
-        order: 2;
-
-        width: 100%;
-        height: auto;
-        min-height: 0;
-
-        margin-top: -92px;
-
-        padding:
-            106px
-            20px
-            106px;
-
-        justify-content: flex-start;
-
-        transform: none;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(16, 16, 15, 0) 0,
-                rgba(16, 16, 15, 0.84) 72px,
-                var(--bg) 118px
-            );
-    }
-
-    .scene .scene-content::before {
-        content: none;
-    }
-
-
-    /* ---------- Typography ---------- */
-
-    .scene h1,
-    .scene h2 {
-        font-size: 59px;
-    }
-
-    .scene-copy {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-    .scene-three .scene-copy {
-        margin-top: 22px;
-    }
-
-
-    /* ---------- Split content ---------- */
-
-    .split-content {
-        display: flex;
-
-        gap: 36px;
-
-        justify-content: center;
-    }
-
-    .scene-two .split-content {
-        gap: 22px;
-    }
-
-    .scene-four .split-content {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-
-        gap: 22px;
-    }
-
-
-    /* ---------- Services ---------- */
-
-    .service-line {
-        margin-top: 35px;
-
-        gap: 10px 16px;
-
-        line-height: 1.5;
-    }
-
-
-    /* ---------- Frame numbers ---------- */
-
-    .frame-number {
-        right: 20px;
-        bottom: 142px;
-    }
-
-
-    /* ---------- Portfolio rail ---------- */
-
-    .portfolio-rail {
-        height: 100px;
-
-        padding: 13px 20px 14px;
-
-        gap: 12px;
-
-        /*
-           Keep the bottom fade strong enough to separate
-           the thumbnails from the image above.
-        */
-        background:
-            linear-gradient(
-                0deg,
-                rgba(10, 10, 9, 0.99) 0%,
-                rgba(10, 10, 9, 0.96) 58%,
-                rgba(10, 10, 9, 0.72) 82%,
-                rgba(10, 10, 9, 0.18) 100%
-            );
-    }
-
-    .rail-label {
-        width: 83px;
-
-        font-size: 9px;
-    }
-
-    .rail-track {
-        flex-direction: row;
-
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        scroll-snap-type: x mandatory;
-    }
-
-    .rail-track a {
-        width: 67px;
-        height: 54px;
-    }
-
-    /*
-       Arrows are hidden on mobile because the gallery
-       can be swiped horizontally.
-    */
-    .rail-next,
-    .rail-prev {
-        display: none;
-    }
-
-
-    /* ---------- Lightbox ---------- */
-
-    .lightbox {
-        padding: 60px 18px 24px;
-    }
-
-    .lightbox-image {
-        max-width: 100%;
-        max-height: 82vh;
-    }
-
-    .lightbox-close {
-        top: 15px;
-        right: 16px;
-    }
-
-
-    /* ---------- Footer ---------- */
-
-    .footer {
-        height: auto;
-
-        flex-wrap: wrap;
-
-        gap: 14px;
-
-        padding-top: 24px;
-        padding-bottom: 24px;
-    }
-
-    .footer div {
-        order: 3;
-
-        width: 100%;
-    }
+  .shell {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .header {
+    height: 70px;
+  }
+  .header nav {
+    gap: 15px;
+  }
+  .header nav a:nth-child(2) {
+    display: none;
+  }
+  .scene, .contact {
+    min-height: 680px;
+    height: auto;
+  }
+  .scene-content {
+    padding-top: 30px;
+    padding-bottom: 150px;
+  }
+  .scene h1, h2, .contact h2 {
+    font-size: 59px;
+  }
+  .split-content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    justify-content: center;
+  }
+  .scene-two .split-content {
+    gap: 22px;
+  }
+  .scene-copy {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .scene-three .scene-copy {
+    margin-top: 22px;
+  }
+  .frame-number {
+    right: 20px;
+    bottom: 142px;
+  }
+  .service-line {
+    margin-top: 35px;
+    gap: 10px 16px;
+    line-height: 1.5;
+  }
+  
+  /* Horizontale mobiele galerij onderaan */
+  .portfolio-rail {
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    padding: 13px 20px 14px;
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    background: linear-gradient(0deg, rgba(10,10,9,.98) 0%, rgba(10,10,9,.88) 72%, rgba(10,10,9,0) 100%);
+    pointer-events: none;
+  }
+  .rail-label {
+    width: 83px;
+    font-size: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--fg);
+    flex: none;
+    padding-bottom: 2px;
+  }
+  .rail-label small {
+    color: var(--muted);
+    font-size: 9px;
+  }
+  .rail-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    pointer-events: auto;
+    padding-bottom: 1px;
+    width: auto;
+  }
+  .rail-track::-webkit-scrollbar {
+    display: none;
+  }
+  .rail-track a {
+    width: 67px;
+    height: 54px;
+    position: relative;
+    display: block;
+    flex: none;
+    scroll-snap-align: start;
+    overflow: hidden;
+    border: 1px solid transparent;
+  }
+  .rail-track img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .rail-next, .rail-prev {
+    display: none;
+  }
+  
+  .footer {
+    height: auto;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .footer div {
+    order: 3;
+    width: 100%;
+  }
 }
