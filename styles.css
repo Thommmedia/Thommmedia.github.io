@@ -754,15 +754,14 @@ body.lightbox-open {
         gap: 15px;
 
         background:
-            linear-gradient(
-                270deg,
-                rgba(10, 10, 9, 0.99) 0%,
-                rgba(10, 10, 9, 0.97) 30%,
-                rgba(10, 10, 9, 0.82) 52%,
-                rgba(10, 10, 9, 0.48) 70%,
-                rgba(10, 10, 9, 0.20) 86%,
-                rgba(10, 10, 9, 0) 100%
-            );
+    linear-gradient(
+        270deg,
+        rgba(10, 10, 9, 0.80) 0%,
+        rgba(10, 10, 9, 0.80) 82%,
+        rgba(10, 10, 9, 0.45) 91%,
+        rgba(10, 10, 9, 0.12) 98%,
+        rgba(10, 10, 9, 0) 100%
+    );
     }
 
 
