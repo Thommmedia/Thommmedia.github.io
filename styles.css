@@ -733,33 +733,33 @@ body.lightbox-open {
    ========================================================= */
 
 @media (min-width: 721px) {
-   .portfolio-rail {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: auto;
 
-    width: 380px;
-    height: 100vh;
+    .portfolio-rail {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
 
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+        width: 430px;
+        height: 100vh;
 
-    padding: 40px 28px;
-    gap: 15px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(10, 10, 9, 0) 0%,
-            rgba(10, 10, 9, 0) 36%,
-            rgba(10, 10, 9, 0.20) 37.5%,
-            rgba(10, 10, 9, 0.55) 39%,
-            rgba(10, 10, 9, 0.80) 41%,
-            rgba(10, 10, 9, 0.80) 100%
-        );
-}
+        padding: 30px 28px;
+        gap: 15px;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(10, 10, 9, 0) 0%,
+                rgba(10, 10, 9, 0) 88.5%,
+                rgba(10, 10, 9, 0.35) 91%,
+                rgba(10, 10, 9, 0.80) 93.5%,
+                rgba(10, 10, 9, 0.80) 100%
+            );
+    }
 
     .rail-label {
         width: 168px;
