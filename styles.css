@@ -34,7 +34,94 @@ body.lightbox-open{overflow:hidden}
   .header {background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0.88) 50%, rgba(10, 10, 9, 0) 100%);border-bottom: none;}
 }
 
+/* Lightbox pijltjes */
 .lightbox-prev, .lightbox-next {
+  position: absolute;top: 50%;transform: translateY(-50%);background: none;color: var(--muted);border: none;font-size: 32px;cursor: pointer;padding: 20px;transition: color .2s ease, transform .2s ease;z-index: 101;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover, .lightbox-next:hover { color: var(--accent); transform: translateY(-50%) scale(1.08); }
+
+/* Basic gallery pijltjes styling */
+.rail-next, .rail-prev {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 0;
+  margin: 0;
+  transition: color .2s ease, transform .2s ease;
+  pointer-events: auto;
+}
+.rail-next:hover { color: var(--accent); transform: translateY(4px); }
+.rail-prev:hover { color: var(--accent); transform: translateY(-4px); }
+
+@media (max-width: 720px) {
+  .rail-next, .rail-prev { display: none; }
+}
+
+/* DESKTOP: VERTICALE BALK RECHTS */
+@media (min-width: 721px) {
+  .shell {
+    padding-right: 210px;
+  }
+  .frame-number {
+    right: 210px;
+  }
+  
+  .portfolio-rail {
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 600px; /* Zorgt ervoor dat de zwarte gradient ver naar links kan uitvloeien */
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; 
+    /* De zachte overloop van rechts (zwart) naar links (transparant) */
+    background: linear-gradient(270deg, rgba(10,10,9,1) 0%, rgba(10,10,9,0.96) 160px, rgba(10,10,9,0.65) 320px, rgba(10,10,9,0) 100%);
+    padding: 40px 48px; 
+    gap: 12px;
+    pointer-events: none; /* Voorkomt dat deze 600px brede onzichtbare doos de klikken op de website blokkeert */
+  }
+  
+  /* Zorgt dat je nog wél op de galerij zelf kan klikken */
+  .rail-track, .rail-next, .rail-prev {
+    pointer-events: auto;
+  }
+
+  .rail-label { 
+    margin-bottom: 0; 
+    text-align: center;
+    width: 112px;
+  }
+  .rail-track {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    width: 112px;
+    align-items: center;
+    max-height: 56vh;
+  }
+  .rail-track::-webkit-scrollbar { display: none; }
+  .rail-track a {
+    width: 112px;
+    height: 88px;
+    flex: none;
+  }
+  
+  /* Dwingt de pijltjes netjes recht te blijven staan */
+  .rail-next, .rail-prev { 
+    width: 112px;
+    text-align: center;
+    transform: none !important; 
+  }
+  .rail-next:hover { transform: translateY(4px) !important; }
+  .rail-prev:hover { transform: translateY(-4px) !important; }
+}.lightbox-prev, .lightbox-next {
   position: absolute;top: 50%;transform: translateY(-50%);background: none;color: var(--muted);border: none;font-size: 32px;cursor: pointer;padding: 20px;transition: color .2s ease, transform .2s ease;z-index: 101;
 }
 .lightbox-prev { left: 20px; }
