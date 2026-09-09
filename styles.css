@@ -361,12 +361,10 @@ body.lightbox-open { overflow: hidden; }
 
 /* --- Desktop Rail (Vertical) --- */
 @media (min-width: 721px) {
-  /* Tekst in de navigatiebalk een stuk groter, alleen voor desktop */
   .header nav a {
     font-size: 16px; 
   }
 
-  /* Schuift 'Work, About, Contact' en paginanummers verder naar links */
   .shell {
     padding-right: 300px;
   }
@@ -374,30 +372,28 @@ body.lightbox-open { overflow: hidden; }
     right: 300px;
   }
   
-  /* Galerij container is compacter in breedte, neemt 100% hoogte in */
   .portfolio-rail {
     position: fixed;
     top: 0;
     bottom: 0;
     left: auto;
     right: 0;
-    width: 208px; /* Compacte breedte (168px afbeeldingen + 20px padding links/rechts) */
+    width: 208px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: rgba(10, 10, 9, 0.8);
-    padding: 30px 20px; /* Boven en onder 30px padding zodat pijlen bovenaan/onderaan staan */
+    padding: 30px 20px;
     z-index: 20;
     pointer-events: none;
   }
 
-  /* De smalle, korte fade direct tegen het zwarte blok aan (ong. 5px vanaf de rand) */
   .portfolio-rail::before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -35px; /* Korte fade van 35 pixels naar links toe */
+    left: -35px;
     width: 35px;
     background: linear-gradient(270deg, rgba(10, 10, 9, 0.8) 0%, rgba(10, 10, 9, 0) 100%);
     pointer-events: none;
@@ -425,7 +421,6 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
 
-  /* De daadwerkelijke galerij vult nu VOLLEDIG de overgebleven ruimte op */
   .rail-track {
     display: flex;
     flex-direction: column;
@@ -434,8 +429,8 @@ body.lightbox-open { overflow: hidden; }
     scroll-snap-type: y mandatory;
     width: 168px;
     align-items: center;
-    flex: 1; /* Hierdoor duwt hij de pijlen naar buiten toe en gebruikt hij alle ruimte */
-    margin: 15px 0; /* Een klein beetje lucht tussen de lijst en de knoppen/tekst */
+    flex: 1;
+    margin: 15px 0;
   }
   
   .rail-track::-webkit-scrollbar {
@@ -443,7 +438,7 @@ body.lightbox-open { overflow: hidden; }
   }
   
   .rail-track a {
-    width: 168px; /* 1.5x grotere afbeeldingen (t.o.v. origineel 112px) */
+    width: 168px;
     height: 132px;
     position: relative;
     display: block;
@@ -451,7 +446,7 @@ body.lightbox-open { overflow: hidden; }
     scroll-snap-align: start;
     overflow: hidden;
     border: 1px solid transparent;
-    margin-bottom: 12px; /* Marges tussen de foto's */
+    margin-bottom: 12px;
   }
   
   .rail-track a:last-child {
@@ -476,7 +471,6 @@ body.lightbox-open { overflow: hidden; }
     transform: scale(1.06);
   }
 
-  /* Pijltjes zijn qua formaat en design nu exact als de Lightbox pijlen */
   .rail-next, .rail-prev {
     background: none;
     border: none;
@@ -495,7 +489,6 @@ body.lightbox-open { overflow: hidden; }
     color: var(--accent); 
   }
   
-  /* Lichte bounce animatie bij de pijltjes */
   .rail-prev:hover { transform: translateY(-4px) scale(1.08); }
   .rail-next:hover { transform: translateY(4px) scale(1.08); }
 }
@@ -523,10 +516,14 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden;
     background: var(--bg);
   }
+  
+  /* Zorgt ervoor dat de tekst/headers op het zwarte blok mooi naar beneden zakken en gecentreerd raken */
   .scene-content {
-    padding-top: 30px;
-    padding-bottom: 150px;
+    padding-top: 140px; 
+    padding-bottom: 170px;
+    justify-content: center;
   }
+
   .scene h1, h2, .contact h2 {
     font-size: 59px;
   }
@@ -548,7 +545,7 @@ body.lightbox-open { overflow: hidden; }
   }
   .frame-number {
     right: 20px;
-    bottom: 142px;
+    bottom: 170px; /* Paginanummer iets mee omhoog getrokken zodat het netjes in de balans blijft */
   }
   .service-line {
     margin-top: 35px;
@@ -560,8 +557,8 @@ body.lightbox-open { overflow: hidden; }
     inset: auto;
     order: 1;
     width: 100%;
-    height: clamp(360px, 58vh, 560px);
-    min-height: 360px;
+    height: clamp(300px, 45vh, 440px); /* Foto iets compacter zodat er meer ruimte overblijft voor het zwarte blok */
+    min-height: 300px;
     flex: none;
     transform: none;
     background-size: cover;
@@ -569,17 +566,19 @@ body.lightbox-open { overflow: hidden; }
   .scene > .shade {
     display: none;
   }
+  
+  /* De transitie en padding van het mobiele zwarte vlak gecorrigeerd */
   .scene .scene-content {
     order: 2;
     position: relative;
     width: 100%;
     height: auto;
     min-height: 0;
-    margin-top: -92px;
-    padding: 106px 20px 106px;
-    justify-content: flex-start;
+    margin-top: -60px;
+    padding: 70px 20px 150px;
+    justify-content: center;
     transform: none;
-    background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.84) 72px, var(--bg) 118px);
+    background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.92) 40px, var(--bg) 90px);
   }
   .scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
     transform: none;
@@ -589,15 +588,15 @@ body.lightbox-open { overflow: hidden; }
     border-bottom: none;
   }
 
-  /* Horizontale mobiele galerij onderaan */
+  /* Horizontale mobiele galerij onderaan: 1.5x zo groot als de eerdere mobiele versie (67px -> ~100px breed) */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100px;
-    padding: 13px 20px 14px;
+    height: 135px; /* Verhoogd om ruimte te bieden aan de 1.5x grotere afbeeldingen */
+    padding: 12px 20px 14px;
     display: flex;
     align-items: end;
     gap: 12px;
@@ -619,7 +618,6 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
   
-  /* Pijltjes verdwijnen op mobiel */
   .rail-next, .rail-prev { display: none; }
 
   .rail-track {
@@ -635,9 +633,11 @@ body.lightbox-open { overflow: hidden; }
   .rail-track::-webkit-scrollbar {
     display: none;
   }
+  
+  /* 1.5x schaling op mobiel (van 67x54 naar 100x81px) */
   .rail-track a {
-    width: 67px;
-    height: 54px;
+    width: 100px;
+    height: 81px;
     position: relative;
     display: block;
     flex: none;
