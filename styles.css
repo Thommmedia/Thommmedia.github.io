@@ -103,7 +103,6 @@ body {
   background-position: center bottom;
 }
 
-/* Lichter gemaakt filter over de grote desktop afbeeldingen */
 .shade {
   position: absolute;
   inset: 0;
@@ -360,7 +359,7 @@ body.lightbox-open { overflow: hidden; }
   transform: translateY(-50%) scale(1.08); 
 }
 
-/* --- Desktop Layout (Vertical Rail & Links schuiven) --- */
+/* --- Desktop Layout --- */
 @media (min-width: 721px) {
   .header nav a {
     font-size: 16px; 
@@ -391,13 +390,14 @@ body.lightbox-open { overflow: hidden; }
     pointer-events: none;
   }
 
+  /* Extreem abrupte, kleine fade op de zijkant van de desktop galerij (10px in plaats van 35px of 150px) */
   .portfolio-rail::before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -35px;
-    width: 35px;
+    left: -10px;
+    width: 10px;
     background: linear-gradient(270deg, rgba(10, 10, 9, 0.8) 0%, rgba(10, 10, 9, 0) 100%);
     pointer-events: none;
     z-index: -1;
@@ -496,7 +496,7 @@ body.lightbox-open { overflow: hidden; }
   .rail-next:hover { transform: translateY(4px) scale(1.08); }
 }
 
-/* --- Mobile Layout Fixes --- */
+/* --- Mobile Layout Fixes (Volledig gestandaardiseerd en opgeruimd) --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -512,21 +512,23 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
+  /* Elke sectie is nu rigide gestandaardiseerd qua hoogte */
   .scene {
     height: 100vh;
-    min-height: 550px;
+    min-height: 650px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     background: var(--bg);
   }
 
+  /* De afbeelding is exact 40% van de schermhoogte in elke sectie */
   .scene .scene-image {
     position: relative;
     inset: auto;
     order: 1;
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     min-height: 250px;
     flex: none;
     transform: none;
@@ -537,16 +539,28 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
+  /* Het zwarte vlak neemt de resterende flexibele ruimte over. Tekst wordt daarin 100% gegarandeerd in het midden vastgezet */
   .scene .scene-content {
     order: 2;
     position: relative;
     width: 100%;
     flex: 1; 
-    margin-top: -30px; 
-    padding: 30px 20px 145px; 
+    padding: 30px 20px 145px; /* De 145px padding reserveren we voor de galerij eronder, zodat teksten erboven vrij blijven */
     justify-content: center; 
     transform: none;
-    background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.95) 40px, var(--bg) 80px);
+    background: var(--bg); /* Vaste zwarte achtergrond */
+  }
+
+  /* Kleine, abrupte fade aan de bovenkant van het zwarte tekstvlak op mobiel */
+  .scene .scene-content::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(180deg, rgba(16,16,15,0) 0%, var(--bg) 100%);
+    pointer-events: none;
   }
   
   .scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
@@ -573,9 +587,12 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 22px;
   }
   
+  /* Framenumber strak aan de onderkant, veilig opgeborgen in de 145px padding marge */
   .frame-number {
+    position: absolute;
     right: 20px;
     bottom: 155px;
+    margin: 0;
   }
   
   .service-line {
@@ -589,9 +606,10 @@ body.lightbox-open { overflow: hidden; }
     border-bottom: none;
   }
 
+  /* Contactpagina gefixt: Is nu op mobiel exact zoals desktop maar gecentreerd qua padding */
   .contact {
     height: 100vh;
-    min-height: 550px; 
+    min-height: 650px; 
     background: var(--accent);
     display: flex;
     flex-direction: column;
@@ -600,13 +618,14 @@ body.lightbox-open { overflow: hidden; }
   
   .contact-content {
     justify-content: center;
-    padding-bottom: 135px;
+    padding-bottom: 135px; /* Compenseert de ruimte die de galerij inneemt */
   }
 
   .contact .frame-number {
     bottom: 155px;
   }
 
+  /* Mobiele Galerij - Nu met solide basiskleur zodat de contact sectie er nooit doorheen kan bloeden */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
@@ -618,7 +637,19 @@ body.lightbox-open { overflow: hidden; }
     display: flex;
     align-items: end;
     gap: 12px;
-    background: linear-gradient(0deg, rgba(10,10,9,.98) 0%, rgba(10,10,9,.88) 72%, rgba(10,10,9,0) 100%);
+    background: rgba(10, 10, 9, 0.98);
+    pointer-events: none;
+  }
+
+  /* Abrupte kleine fade (10px) voor de rand van de mobiele galerij */
+  .portfolio-rail::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(0deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0) 100%);
     pointer-events: none;
   }
   
