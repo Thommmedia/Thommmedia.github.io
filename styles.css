@@ -103,14 +103,15 @@ body {
   background-position: center bottom;
 }
 
+/* Lichter gemaakt filter over de grote desktop afbeeldingen */
 .shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(6,6,6,.78) 0%, rgba(6,6,6,.37) 43%, rgba(6,6,6,.08) 100%);
+  background: linear-gradient(90deg, rgba(6,6,6,.65) 0%, rgba(6,6,6,.25) 43%, rgba(6,6,6,.02) 100%);
 }
 
 .scene-two .shade, .scene-four .shade {
-  background: linear-gradient(90deg, rgba(6,6,6,.65), rgba(6,6,6,.18) 65%, rgba(6,6,6,.4));
+  background: linear-gradient(90deg, rgba(6,6,6,.55) 0%, rgba(6,6,6,.15) 65%, rgba(6,6,6,.30) 100%);
 }
 
 .scene-content {
@@ -365,7 +366,6 @@ body.lightbox-open { overflow: hidden; }
     font-size: 16px; 
   }
 
-  /* Door de max-width én de padding-right te verhogen schuift de *hele* sectie (tekst + menu) zo'n 50-80px extra naar links, zonder te botsen met de galerij! */
   .shell {
     max-width: 1360px;
     padding-right: 380px; 
@@ -512,10 +512,9 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Zwarte blokken (scene) instellingen voor mobiel - kortere blokken! */
   .scene {
     height: 100vh;
-    min-height: 550px; /* Minimum hoogte flink teruggebracht */
+    min-height: 550px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -527,7 +526,7 @@ body.lightbox-open { overflow: hidden; }
     inset: auto;
     order: 1;
     width: 100%;
-    height: 50vh; /* Foto vult precies de bovenste helft */
+    height: 50vh;
     min-height: 250px;
     flex: none;
     transform: none;
@@ -538,15 +537,14 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Text container perfect gecentreerd in het zwarte gedeelte */
   .scene .scene-content {
     order: 2;
     position: relative;
     width: 100%;
-    flex: 1; /* Neemt resterende hoogte over onder de afbeelding */
-    margin-top: -30px; /* Vloeiende overloop op foto */
-    padding: 30px 20px 145px; /* De 145px aan de onderkant zorgt dat het exact in het visuele midden zit bóven de galerij-slider */
-    justify-content: center; /* Zorgt ervoor dat alle tekst perfect verticaal in het midden blijft! */
+    flex: 1; 
+    margin-top: -30px; 
+    padding: 30px 20px 145px; 
+    justify-content: center; 
     transform: none;
     background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.95) 40px, var(--bg) 80px);
   }
@@ -575,7 +573,6 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 22px;
   }
   
-  /* Frame number strak boven de rail */
   .frame-number {
     right: 20px;
     bottom: 155px;
@@ -592,10 +589,9 @@ body.lightbox-open { overflow: hidden; }
     border-bottom: none;
   }
 
-  /* Het contact blok gefixt zodat hij er exact uitziet als desktop, maar voor mobiel gecentreerd is */
   .contact {
     height: 100vh;
-    min-height: 550px; /* Zelfde minimum hoogte als alle andere mobiele blokken */
+    min-height: 550px; 
     background: var(--accent);
     display: flex;
     flex-direction: column;
@@ -604,21 +600,20 @@ body.lightbox-open { overflow: hidden; }
   
   .contact-content {
     justify-content: center;
-    padding-bottom: 135px; /* Offset to center it above the mobile rail */
+    padding-bottom: 135px;
   }
 
   .contact .frame-number {
-    bottom: 155px; /* Blijft gelijk aan de rest */
+    bottom: 155px;
   }
 
-  /* Horizontale mobiele galerij - 1.5x groter! */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 135px; /* Rail hoger gemaakt voor de 1.5x grotere afbeeldingen */
+    height: 135px;
     padding: 12px 20px 14px;
     display: flex;
     align-items: end;
@@ -660,7 +655,6 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* 1.5x opschaling op mobiel (Van 67x54px naar 100x81px) */
   .rail-track a {
     width: 100px;
     height: 81px;
