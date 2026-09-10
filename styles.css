@@ -103,14 +103,15 @@ body {
   background-position: center bottom;
 }
 
+/* De rechterkant van alle schaduwen (100%) eindigt nu op rgba(6,6,6,0). Dit voorkomt de donkere streep die je eerder zag. */
 .shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(6,6,6,.65) 0%, rgba(6,6,6,.25) 43%, rgba(6,6,6,.02) 100%);
+  background: linear-gradient(90deg, rgba(6,6,6,.65) 0%, rgba(6,6,6,.25) 43%, rgba(6,6,6,0) 100%);
 }
 
 .scene-two .shade, .scene-four .shade {
-  background: linear-gradient(90deg, rgba(6,6,6,.55) 0%, rgba(6,6,6,.15) 65%, rgba(6,6,6,.30) 100%);
+  background: linear-gradient(90deg, rgba(6,6,6,.55) 0%, rgba(6,6,6,.15) 65%, rgba(6,6,6,0) 100%);
 }
 
 .scene-content {
@@ -386,21 +387,23 @@ body.lightbox-open { overflow: hidden; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between; 
-    background: rgba(10, 10, 9, 0.8);
-    padding: 6px 10px; /* Pijltjes nog verder naar de uiterste boven- en onderkant geduwd */
+    /* Vaste achtergrondkleur is WEG! Voorkomt de harde zwarte streep naast de foto's */
+    background: transparent;
+    padding: 0 10px; /* Marges en padding maximaal weggestript, pijltjes staan uiterst boven en onder */
     z-index: 20;
     pointer-events: none;
   }
 
-  /* Fade begint nu op 1/3e van de foto's (60pxbreed) en eindigt op dezelfde strakke plek */
+  /* Het zwarte vlak is nu één vloeiende overloop die tot 1/3e van de foto's doorloopt */
   .portfolio-rail::before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: -60px;
-    width: 60px;
-    background: linear-gradient(270deg, rgba(10, 10, 9, 0.8) 0%, rgba(10, 10, 9, 0) 100%);
+    right: 0;
+    /* Begint 60px buiten de rail op 0%, bereikt 0.8 zwart exact op 1/3e van de foto's (126px vanaf de start) */
+    background: linear-gradient(to right, rgba(10, 10, 9, 0) 0%, rgba(10, 10, 9, 0.8) 126px, rgba(10, 10, 9, 0.8) 100%);
     pointer-events: none;
     z-index: -1;
   }
@@ -418,7 +421,7 @@ body.lightbox-open { overflow: hidden; }
     gap: 5px;
     color: var(--fg);
     flex: none;
-    padding-bottom: 2px;
+    padding: 20px 0 2px;
   }
   
   .rail-label small {
@@ -426,7 +429,7 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
 
-  /* Fotogalerij is hierdoor nog iets langer geworden in de vrije ruimte daartussen */
+  /* De foto's in de galerij hebben nu óók een naadloze fade op 1/3e! */
   .rail-track {
     display: flex;
     flex-direction: column;
@@ -437,7 +440,10 @@ body.lightbox-open { overflow: hidden; }
     align-items: center;
     flex: 1 1 auto; 
     height: 100%;
-    margin: 8px 0;
+    margin: 5px 0;
+    /* CSS Mask zorgt dat de linkerkant van de afbeeldingen zelf mooi vervaagt */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
   }
   
   .rail-track::-webkit-scrollbar {
@@ -484,13 +490,18 @@ body.lightbox-open { overflow: hidden; }
     color: var(--muted);
     font-size: 32px;
     cursor: pointer;
-    padding: 6px 0;
+    padding: 0;
     margin: 0;
+    height: 40px;
+    line-height: 40px;
     width: 168px;
     text-align: center;
     transition: color .2s ease, transform .2s ease;
     flex: none;
   }
+  
+  .rail-prev { margin-top: 10px; }
+  .rail-next { margin-bottom: 10px; }
   
   .rail-next:hover, .rail-prev:hover { 
     color: var(--accent); 
@@ -624,16 +635,17 @@ body.lightbox-open { overflow: hidden; }
     bottom: 25px;
   }
 
+  /* Het zwarte vlak is een stuk minder hoog gemaakt en zit strakker om de foto's */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 135px;
-    padding: 12px 20px 14px;
+    height: 112px;
+    padding: 10px 20px 15px;
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: 12px;
     background: rgba(10, 10, 9, 0.98);
     pointer-events: none;
@@ -659,6 +671,7 @@ body.lightbox-open { overflow: hidden; }
     color: var(--fg);
     flex: none;
     padding-bottom: 2px;
+    transform: translateY(2px);
   }
   
   .rail-label small {
@@ -675,7 +688,6 @@ body.lightbox-open { overflow: hidden; }
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     pointer-events: auto;
-    padding-bottom: 1px;
     width: auto;
   }
   
@@ -704,7 +716,7 @@ body.lightbox-open { overflow: hidden; }
   .footer {
     height: auto;
     padding-top: 24px;
-    padding-bottom: 160px;
+    padding-bottom: 140px;
     gap: 14px;
     flex-wrap: wrap;
   }
