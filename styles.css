@@ -359,17 +359,20 @@ body.lightbox-open { overflow: hidden; }
   transform: translateY(-50%) scale(1.08); 
 }
 
-/* --- Desktop Rail (Vertical) --- */
+/* --- Desktop Layout (Vertical Rail & Links schuiven) --- */
 @media (min-width: 721px) {
   .header nav a {
     font-size: 16px; 
   }
 
+  /* Door de max-width én de padding-right te verhogen schuift de *hele* sectie (tekst + menu) zo'n 50-80px extra naar links, zonder te botsen met de galerij! */
   .shell {
-    padding-right: 300px;
+    max-width: 1360px;
+    padding-right: 380px; 
   }
+  
   .frame-number {
-    right: 300px;
+    right: 380px;
   }
   
   .portfolio-rail {
@@ -508,22 +511,50 @@ body.lightbox-open { overflow: hidden; }
   .header nav a:nth-child(2) {
     display: none;
   }
-  .scene, .contact {
-    min-height: 680px;
-    height: auto;
+  
+  /* Zwarte blokken (scene) instellingen voor mobiel - kortere blokken! */
+  .scene {
+    height: 100vh;
+    min-height: 550px; /* Minimum hoogte flink teruggebracht */
     display: flex;
     flex-direction: column;
     overflow: hidden;
     background: var(--bg);
   }
-  
-  /* Zorgt ervoor dat de tekst/headers op het zwarte blok mooi naar beneden zakken en gecentreerd raken */
-  .scene-content {
-    padding-top: 140px; 
-    padding-bottom: 170px;
-    justify-content: center;
+
+  .scene .scene-image {
+    position: relative;
+    inset: auto;
+    order: 1;
+    width: 100%;
+    height: 50vh; /* Foto vult precies de bovenste helft */
+    min-height: 250px;
+    flex: none;
+    transform: none;
+    background-size: cover;
   }
 
+  .scene > .shade {
+    display: none;
+  }
+  
+  /* Text container perfect gecentreerd in het zwarte gedeelte */
+  .scene .scene-content {
+    order: 2;
+    position: relative;
+    width: 100%;
+    flex: 1; /* Neemt resterende hoogte over onder de afbeelding */
+    margin-top: -30px; /* Vloeiende overloop op foto */
+    padding: 30px 20px 145px; /* De 145px aan de onderkant zorgt dat het exact in het visuele midden zit bóven de galerij-slider */
+    justify-content: center; /* Zorgt ervoor dat alle tekst perfect verticaal in het midden blijft! */
+    transform: none;
+    background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.95) 40px, var(--bg) 80px);
+  }
+  
+  .scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
+    transform: none;
+  }
+  
   .scene h1, h2, .contact h2 {
     font-size: 59px;
   }
@@ -543,59 +574,51 @@ body.lightbox-open { overflow: hidden; }
   .scene-three .scene-copy {
     margin-top: 22px;
   }
+  
+  /* Frame number strak boven de rail */
   .frame-number {
     right: 20px;
-    bottom: 170px; /* Paginanummer iets mee omhoog getrokken zodat het netjes in de balans blijft */
+    bottom: 155px;
   }
+  
   .service-line {
     margin-top: 35px;
     gap: 10px 16px;
     line-height: 1.5;
   }
-  .scene .scene-image {
-    position: relative;
-    inset: auto;
-    order: 1;
-    width: 100%;
-    height: clamp(300px, 45vh, 440px); /* Foto iets compacter zodat er meer ruimte overblijft voor het zwarte blok */
-    min-height: 300px;
-    flex: none;
-    transform: none;
-    background-size: cover;
-  }
-  .scene > .shade {
-    display: none;
-  }
   
-  /* De transitie en padding van het mobiele zwarte vlak gecorrigeerd */
-  .scene .scene-content {
-    order: 2;
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    margin-top: -60px;
-    padding: 70px 20px 150px;
-    justify-content: center;
-    transform: none;
-    background: linear-gradient(180deg, rgba(16,16,15,0) 0, rgba(16,16,15,.92) 40px, var(--bg) 90px);
-  }
-  .scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
-    transform: none;
-  }
   .header {
     background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0.88) 50%, rgba(10, 10, 9, 0) 100%);
     border-bottom: none;
   }
 
-  /* Horizontale mobiele galerij onderaan: 1.5x zo groot als de eerdere mobiele versie (67px -> ~100px breed) */
+  /* Het contact blok gefixt zodat hij er exact uitziet als desktop, maar voor mobiel gecentreerd is */
+  .contact {
+    height: 100vh;
+    min-height: 550px; /* Zelfde minimum hoogte als alle andere mobiele blokken */
+    background: var(--accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contact-content {
+    justify-content: center;
+    padding-bottom: 135px; /* Offset to center it above the mobile rail */
+  }
+
+  .contact .frame-number {
+    bottom: 155px; /* Blijft gelijk aan de rest */
+  }
+
+  /* Horizontale mobiele galerij - 1.5x groter! */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 135px; /* Verhoogd om ruimte te bieden aan de 1.5x grotere afbeeldingen */
+    height: 135px; /* Rail hoger gemaakt voor de 1.5x grotere afbeeldingen */
     padding: 12px 20px 14px;
     display: flex;
     align-items: end;
@@ -603,6 +626,7 @@ body.lightbox-open { overflow: hidden; }
     background: linear-gradient(0deg, rgba(10,10,9,.98) 0%, rgba(10,10,9,.88) 72%, rgba(10,10,9,0) 100%);
     pointer-events: none;
   }
+  
   .rail-label {
     width: 83px;
     font-size: 9px;
@@ -613,6 +637,7 @@ body.lightbox-open { overflow: hidden; }
     flex: none;
     padding-bottom: 2px;
   }
+  
   .rail-label small {
     color: var(--muted);
     font-size: 9px;
@@ -630,11 +655,12 @@ body.lightbox-open { overflow: hidden; }
     padding-bottom: 1px;
     width: auto;
   }
+  
   .rail-track::-webkit-scrollbar {
     display: none;
   }
   
-  /* 1.5x schaling op mobiel (van 67x54 naar 100x81px) */
+  /* 1.5x opschaling op mobiel (Van 67x54px naar 100x81px) */
   .rail-track a {
     width: 100px;
     height: 81px;
@@ -645,6 +671,7 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden;
     border: 1px solid transparent;
   }
+  
   .rail-track img {
     display: block;
     width: 100%;
