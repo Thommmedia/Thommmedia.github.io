@@ -193,8 +193,9 @@ body {
   gap: 35px;
 }
 
+/* Maximale breedte tekst wat opgeschroefd zodat zinnen veel verder door kunnen lopen */
 .scene-copy {
-  max-width: 420px;
+  max-width: 560px;
   color: var(--muted);
   font-size: 16px;
   line-height: 1.75;
@@ -359,23 +360,23 @@ body.lightbox-open { overflow: hidden; }
   transform: translateY(-50%) scale(1.08); 
 }
 
-/* --- Desktop Layout (Tekst meer naar links & strakke galerij-fade) --- */
+/* --- Desktop Layout (Tekst krijgt de ruimte, Rail maximaal gespreid) --- */
 @media (min-width: 721px) {
   .header nav a {
     font-size: 16px; 
   }
 
-  /* Text & Headers 80px verder naar links geduwd (padding van 380px naar 480px gegaan) */
   .shell {
-    max-width: 1360px;
-    padding-right: 480px; 
+    max-width: 1400px;
+    padding-left: 60px; /* Ietsje verder naar rechts weggeschoven vanaf rand */
+    padding-right: 260px; /* Padding flink omlaag geschroefd (was 480). Tekst kan nu volop naar rechts doorlopen! */
   }
   
+  /* Sectienummers staan nu op een normale positie vlak naast de galerij (i.p.v. samengedrukt in het midden) */
   .frame-number {
-    right: 480px;
+    right: 230px; 
   }
   
-  /* Galerij achtergrond is krapper om de foto's heen gezet (188px i.p.v. 208px) */
   .portfolio-rail {
     position: fixed;
     top: 0;
@@ -386,13 +387,13 @@ body.lightbox-open { overflow: hidden; }
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between; /* Zorgt ervoor dat de pijltjes naar de uiterste boven/onderkant worden gedrukt */
     background: rgba(10, 10, 9, 0.8);
-    padding: 30px 10px; /* Nog maar 10px zwarte ruimte naast de foto's */
+    padding: 15px 10px; /* Padding extreem geminimaliseerd zodat pijltjes zover mogelijk weg staan */
     z-index: 20;
     pointer-events: none;
   }
 
-  /* Heel abrupte en kleine fade, start strak tegen de rand aan (slechts 8px breed) */
   .portfolio-rail::before {
     content: "";
     position: absolute;
@@ -426,6 +427,7 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
 
+  /* Galerij vult nu de gehele ruimte TUSSEN de twee ver-uit-elkaar-staande pijltjes op */
   .rail-track {
     display: flex;
     flex-direction: column;
@@ -434,7 +436,8 @@ body.lightbox-open { overflow: hidden; }
     scroll-snap-type: y mandatory;
     width: 168px;
     align-items: center;
-    flex: 1;
+    flex: 1 1 auto; 
+    height: 100%;
     margin: 15px 0;
   }
   
@@ -498,7 +501,7 @@ body.lightbox-open { overflow: hidden; }
   .rail-next:hover { transform: translateY(4px) scale(1.08); }
 }
 
-/* --- Mobile Layout Fixes (Strak afgesneden tekstblokken) --- */
+/* --- Mobile Layout (Ongewijzigd gebleven - precies passend) --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -514,7 +517,6 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Door 'height: auto' sluit het zwarte blok nu precies onder de tekst af en ontstaan er geen enorme gaten meer! */
   .scene {
     height: auto;
     min-height: 0;
@@ -540,20 +542,18 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Container 'krimpt' nu netjes om de inhoud heen */
   .scene .scene-content {
     order: 2;
     position: relative;
     width: 100%;
     flex: none; 
     margin-top: -30px; 
-    padding: 35px 20px 65px; /* Tekst staat nu altijd netjes gecentreerd in een strak blok, zonder loze ruimte eronder */
+    padding: 35px 20px 65px; 
     justify-content: flex-start; 
     transform: none;
     background: var(--bg);
   }
 
-  /* Abrupte fade aan de bovenkant van mobiele blok */
   .scene .scene-content::before {
     content: "";
     position: absolute;
@@ -589,7 +589,6 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 22px;
   }
   
-  /* Paginanummer staat nu altijd rechtsonder ín het zwarte, kortere blok */
   .frame-number {
     position: absolute;
     right: 20px;
@@ -608,7 +607,6 @@ body.lightbox-open { overflow: hidden; }
     border-bottom: none;
   }
 
-  /* Let's Collaborate blok is ook mooi op maat gemaakt */
   .contact {
     height: auto;
     min-height: 400px;
@@ -627,7 +625,6 @@ body.lightbox-open { overflow: hidden; }
     bottom: 25px;
   }
 
-  /* Rail instellingen op mobiel */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
@@ -643,7 +640,6 @@ body.lightbox-open { overflow: hidden; }
     pointer-events: none;
   }
 
-  /* Abrupte kleine fade voor de rand van de mobiele galerij */
   .portfolio-rail::before {
     content: "";
     position: absolute;
@@ -706,11 +702,10 @@ body.lightbox-open { overflow: hidden; }
     object-fit: cover;
   }
   
-  /* Footer heeft padding om veilig boven de galerij uit te komen als je naar beneden scrollt */
   .footer {
     height: auto;
     padding-top: 24px;
-    padding-bottom: 160px; /* Garandeert dat tekst niet onzichtbaar onder de slider verdwijnt */
+    padding-bottom: 160px;
     gap: 14px;
     flex-wrap: wrap;
   }
