@@ -39,14 +39,15 @@ body {
   border-bottom: 1px solid var(--line);
 }
 
+/* Groter gemaakt: van 17px naar 23px */
 .wordmark {
   color: var(--fg);
-  font-size: 17px;
+  font-size: 23px; 
   font-weight: 700;
   letter-spacing: .14em;
   text-decoration: none;
   display: inline-block;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
   border-bottom: 1px solid var(--accent);
 }
 
@@ -103,7 +104,6 @@ body {
   background-position: center bottom;
 }
 
-/* De rechterkant van alle schaduwen (100%) eindigt nu op rgba(6,6,6,0). Dit voorkomt de donkere streep die je eerder zag. */
 .shade {
   position: absolute;
   inset: 0;
@@ -387,14 +387,12 @@ body.lightbox-open { overflow: hidden; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between; 
-    /* Vaste achtergrondkleur is WEG! Voorkomt de harde zwarte streep naast de foto's */
     background: transparent;
-    padding: 0 10px; /* Marges en padding maximaal weggestript, pijltjes staan uiterst boven en onder */
+    padding: 0 10px; 
     z-index: 20;
     pointer-events: none;
   }
 
-  /* Het zwarte vlak is nu één vloeiende overloop die tot 1/3e van de foto's doorloopt */
   .portfolio-rail::before {
     content: "";
     position: absolute;
@@ -402,7 +400,6 @@ body.lightbox-open { overflow: hidden; }
     bottom: 0;
     left: -60px;
     right: 0;
-    /* Begint 60px buiten de rail op 0%, bereikt 0.8 zwart exact op 1/3e van de foto's (126px vanaf de start) */
     background: linear-gradient(to right, rgba(10, 10, 9, 0) 0%, rgba(10, 10, 9, 0.8) 126px, rgba(10, 10, 9, 0.8) 100%);
     pointer-events: none;
     z-index: -1;
@@ -429,7 +426,6 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
 
-  /* De foto's in de galerij hebben nu óók een naadloze fade op 1/3e! */
   .rail-track {
     display: flex;
     flex-direction: column;
@@ -441,9 +437,10 @@ body.lightbox-open { overflow: hidden; }
     flex: 1 1 auto; 
     height: 100%;
     margin: 5px 0;
-    /* CSS Mask zorgt dat de linkerkant van de afbeeldingen zelf mooi vervaagt */
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
+    /* Horizontale mask over foto's is weggehaald! Ze zijn in de breedte nu 100% zichtbaar.
+       In plaats daarvan vervagen ze nu vetjes aan de BOVEN en ONDERKANT tijdens het scrollen! */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
   }
   
   .rail-track::-webkit-scrollbar {
@@ -635,7 +632,6 @@ body.lightbox-open { overflow: hidden; }
     bottom: 25px;
   }
 
-  /* Het zwarte vlak is een stuk minder hoog gemaakt en zit strakker om de foto's */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
