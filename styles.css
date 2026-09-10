@@ -193,7 +193,6 @@ body {
   gap: 35px;
 }
 
-/* Maximale breedte tekst wat opgeschroefd zodat zinnen veel verder door kunnen lopen */
 .scene-copy {
   max-width: 560px;
   color: var(--muted);
@@ -360,7 +359,7 @@ body.lightbox-open { overflow: hidden; }
   transform: translateY(-50%) scale(1.08); 
 }
 
-/* --- Desktop Layout (Tekst krijgt de ruimte, Rail maximaal gespreid) --- */
+/* --- Desktop Layout --- */
 @media (min-width: 721px) {
   .header nav a {
     font-size: 16px; 
@@ -368,11 +367,10 @@ body.lightbox-open { overflow: hidden; }
 
   .shell {
     max-width: 1400px;
-    padding-left: 60px; /* Ietsje verder naar rechts weggeschoven vanaf rand */
-    padding-right: 260px; /* Padding flink omlaag geschroefd (was 480). Tekst kan nu volop naar rechts doorlopen! */
+    padding-left: 60px;
+    padding-right: 260px; 
   }
   
-  /* Sectienummers staan nu op een normale positie vlak naast de galerij (i.p.v. samengedrukt in het midden) */
   .frame-number {
     right: 230px; 
   }
@@ -387,20 +385,21 @@ body.lightbox-open { overflow: hidden; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Zorgt ervoor dat de pijltjes naar de uiterste boven/onderkant worden gedrukt */
+    justify-content: space-between; 
     background: rgba(10, 10, 9, 0.8);
-    padding: 15px 10px; /* Padding extreem geminimaliseerd zodat pijltjes zover mogelijk weg staan */
+    padding: 6px 10px; /* Pijltjes nog verder naar de uiterste boven- en onderkant geduwd */
     z-index: 20;
     pointer-events: none;
   }
 
+  /* Fade begint nu op 1/3e van de foto's (60pxbreed) en eindigt op dezelfde strakke plek */
   .portfolio-rail::before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -8px;
-    width: 8px;
+    left: -60px;
+    width: 60px;
     background: linear-gradient(270deg, rgba(10, 10, 9, 0.8) 0%, rgba(10, 10, 9, 0) 100%);
     pointer-events: none;
     z-index: -1;
@@ -427,7 +426,7 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
 
-  /* Galerij vult nu de gehele ruimte TUSSEN de twee ver-uit-elkaar-staande pijltjes op */
+  /* Fotogalerij is hierdoor nog iets langer geworden in de vrije ruimte daartussen */
   .rail-track {
     display: flex;
     flex-direction: column;
@@ -438,7 +437,7 @@ body.lightbox-open { overflow: hidden; }
     align-items: center;
     flex: 1 1 auto; 
     height: 100%;
-    margin: 15px 0;
+    margin: 8px 0;
   }
   
   .rail-track::-webkit-scrollbar {
@@ -485,7 +484,7 @@ body.lightbox-open { overflow: hidden; }
     color: var(--muted);
     font-size: 32px;
     cursor: pointer;
-    padding: 10px 0;
+    padding: 6px 0;
     margin: 0;
     width: 168px;
     text-align: center;
@@ -501,7 +500,7 @@ body.lightbox-open { overflow: hidden; }
   .rail-next:hover { transform: translateY(4px) scale(1.08); }
 }
 
-/* --- Mobile Layout (Ongewijzigd gebleven - precies passend) --- */
+/* --- Mobile Layout --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
