@@ -39,15 +39,14 @@ body {
   border-bottom: 1px solid var(--line);
 }
 
-/* Groter gemaakt: van 17px naar 23px */
 .wordmark {
   color: var(--fg);
-  font-size: 23px; 
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: .14em;
   text-decoration: none;
   display: inline-block;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
   border-bottom: 1px solid var(--accent);
 }
 
@@ -194,9 +193,10 @@ body {
   gap: 35px;
 }
 
+/* Tekst is nu maximaal wit (#ffffff) voor uiterste leesbaarheid op de donkere achtergrond! */
 .scene-copy {
   max-width: 560px;
-  color: var(--muted);
+  color: #ffffff;
   font-size: 16px;
   line-height: 1.75;
   margin: 0 0 4px;
@@ -437,10 +437,8 @@ body.lightbox-open { overflow: hidden; }
     flex: 1 1 auto; 
     height: 100%;
     margin: 5px 0;
-    /* Horizontale mask over foto's is weggehaald! Ze zijn in de breedte nu 100% zichtbaar.
-       In plaats daarvan vervagen ze nu vetjes aan de BOVEN en ONDERKANT tijdens het scrollen! */
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
   }
   
   .rail-track::-webkit-scrollbar {
@@ -614,22 +612,25 @@ body.lightbox-open { overflow: hidden; }
     border-bottom: none;
   }
 
+  /* Het gele gedeelte is weer ge-reset naar 100vh hoogte, zodat het het scherm volledig vult */
   .contact {
-    height: auto;
-    min-height: 400px;
-    padding: 60px 0 80px;
+    height: 100vh;
+    min-height: 550px;
+    padding: 0;
     background: var(--accent);
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   
+  /* Door de inhoud van 'Let's collaborate' iets naar boven te shiften (padding-bottom 112px) blijft het exact in het midden boven de slider gecentreerd! */
   .contact-content {
-    padding-bottom: 0;
+    justify-content: center;
+    padding-bottom: 112px; 
   }
 
   .contact .frame-number {
-    bottom: 25px;
+    bottom: 135px;
   }
 
   .portfolio-rail {
@@ -709,14 +710,22 @@ body.lightbox-open { overflow: hidden; }
     object-fit: cover;
   }
   
+  /* De footer is nu weer de bekende zwarte balk, en wordt veilig boven de galerij geladen als je helemaal onderaan bent. */
   .footer {
     height: auto;
-    padding-top: 24px;
-    padding-bottom: 140px;
+    padding-top: 30px;
+    padding-bottom: 140px; 
     gap: 14px;
     flex-wrap: wrap;
+    background: var(--bg);
+    color: var(--muted);
   }
   
+  .footer a {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
   .footer div {
     order: 3;
     width: 100%;
