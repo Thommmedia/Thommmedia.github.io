@@ -359,7 +359,7 @@ body.lightbox-open { overflow: hidden; }
   transform: translateY(-50%) scale(1.08); 
 }
 
-/* --- Desktop Layout --- */
+/* --- Desktop / Tablet Layout --- */
 @media (min-width: 721px) {
   .header nav a {
     font-size: 16px; 
@@ -425,7 +425,6 @@ body.lightbox-open { overflow: hidden; }
     font-size: 9px;
   }
 
-  /* Het CSS mask is hier verwijderd, zodat de foto's in de galerij weer volledig zichtbaar zijn zonder dat ze aan de linkerkant wegfaden */
   .rail-track {
     display: flex;
     flex-direction: column;
@@ -504,110 +503,98 @@ body.lightbox-open { overflow: hidden; }
   .rail-next:hover { transform: translateY(4px) scale(1.08); }
 }
 
+/* Tablet optimalisatie: Zorgt dat tekst op smalle desktop-vensters niet extreem in elkaar drukt */
+@media (max-width: 1024px) and (min-width: 721px) {
+  .split-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .shell {
+    padding-right: 220px;
+  }
+}
+
 /* --- Mobile Layout --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
     padding-right: 20px;
   }
+  
   .header {
     height: 70px;
+    background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0) 100%);
+    border-bottom: none;
   }
+  
   .header nav {
     gap: 15px;
   }
+  
   .header nav a:nth-child(2) {
     display: none;
   }
   
+  /* Mobiel krijgt nu óók de indrukwekkende full-screen layouts! */
   .scene {
-    height: auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    background: var(--bg);
-  }
-
-  .scene .scene-image {
-    position: relative;
-    inset: auto;
-    order: 1;
-    width: 100%;
-    height: 40vh;
-    min-height: 250px;
-    flex: none;
-    transform: none;
-    background-size: cover;
-  }
-
-  .scene > .shade {
-    display: none;
+    height: 100vh;
+    min-height: 600px;
   }
   
-  .scene .scene-content {
-    order: 2;
-    position: relative;
-    width: 100%;
-    flex: none; 
-    margin-top: -30px; 
-    padding: 35px 20px 65px; 
-    justify-content: flex-start; 
-    transform: none;
-    background: var(--bg);
-  }
-
-  .scene .scene-content::before {
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 0;
-    right: 0;
-    height: 15px;
-    background: linear-gradient(180deg, rgba(16,16,15,0) 0%, var(--bg) 100%);
-    pointer-events: none;
+  /* De schaduwlaag op mobiel loopt van boven naar beneden, dit maakt de tekst onderaan optimaal leesbaar */
+  .shade {
+    background: linear-gradient(180deg, rgba(6,6,6,0.1) 0%, rgba(6,6,6,0.7) 60%, rgba(6,6,6,0.95) 100%);
   }
   
-  .scene-two .scene-content, .scene-three .scene-content, .scene-four .scene-content {
+  .scene-two .shade, .scene-four .shade {
+    background: linear-gradient(180deg, rgba(6,6,6,0.2) 0%, rgba(6,6,6,0.8) 60%, rgba(6,6,6,0.98) 100%);
+  }
+  
+  /* Tekst in de secties wordt naar onderen geschoven en vrijgehouden van de galerij */
+  .scene-content {
+    padding-top: 80px;
+    padding-bottom: 150px; 
+    justify-content: flex-end; 
     transform: none;
   }
   
   .scene h1, h2, .contact h2 {
-    font-size: 59px;
+    font-size: clamp(48px, 12vw, 64px);
   }
+  
+  /* Dit lost het "doorlopende tekst" probleem op: de tekst wordt niet langer samengedrukt tot een piepklein kolommetje, maar krijgt de volledige breedte onder de titel! */
   .split-content {
     display: flex;
     flex-direction: column;
-    gap: 36px;
-    justify-content: center;
+    gap: 16px;
+    align-items: flex-start;
   }
+  
   .scene-two .split-content {
-    gap: 22px;
+    gap: 16px;
   }
+  
   .scene-copy {
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 0;
   }
+  
   .scene-three .scene-copy {
-    margin-top: 22px;
+    margin-top: 15px;
   }
   
   .frame-number {
     position: absolute;
     right: 20px;
-    bottom: 25px;
+    bottom: 135px;
     margin: 0;
   }
   
   .service-line {
-    margin-top: 35px;
+    margin-top: 25px;
     gap: 10px 16px;
     line-height: 1.5;
-  }
-  
-  .header {
-    background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0.88) 50%, rgba(10, 10, 9, 0) 100%);
-    border-bottom: none;
   }
 
   .contact {
@@ -629,6 +616,7 @@ body.lightbox-open { overflow: hidden; }
     bottom: 135px;
   }
 
+  /* Galerij blijft onderaan op mobiel en de transparante mask is verwijderd */
   .portfolio-rail {
     position: fixed;
     z-index: 20;
@@ -703,7 +691,7 @@ body.lightbox-open { overflow: hidden; }
     display: block;
     width: 100%;
     height: 100%;
-    object-file: cover;
+    object-fit: cover;
   }
   
   .footer {
