@@ -70,7 +70,7 @@ body {
   text-transform: uppercase;
 }
 
-.header nav a:hover, .footer a:hover {
+.header nav a:hover, .footer nav a:hover {
   color: var(--accent);
 }
 
@@ -511,7 +511,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - V2 (Correcte Z-index, Doorlopende Zuil, Hero Gecentreerd) --- */
+/* --- Mobile Layout - V3 (Perfecte Liquid Glass Overgang & Gecentreerde Hero) --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -541,63 +541,63 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
-  /* Foto ligt fysiek BOVENOP de glazen zuil, en neemt alleen de bovenste 42% in */
+  /* Foto vult de bovenste 42% */
   .scene-image {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 42vh;
     width: 100%;
     transform: none;
-    z-index: 2; /* Belangrijk: ligt OVER het glas heen! */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Subtiele schaduw benadrukt dat hij erop ligt */
+    z-index: 1;
   }
   
   .shade {
     display: none; 
   }
   
-  /* De Glazen Zuil komt van ONDER de foto vandaan */
+  /* De Liquid Glass Zuil schuift eroverheen met een prachtige organische fade-overgang aan de bovenkant */
   .scene-content {
     position: relative;
-    z-index: 1; /* Ligt ONDER de foto */
-    margin-top: -20px; /* Schuift veilig achter de foto omhoog */
-    margin-left: 8px; /* Maakt de zuil mooi breed, met een minimale 8px rand (16px totaal afgesneden) */
+    z-index: 2;
+    margin-top: 36vh; /* Start al iets hoger over de foto heen */
+    margin-left: 8px; 
     margin-right: 8px;
     width: calc(100% - 16px);
-    flex: 1; /* Neemt alle overgebleven ruimte naar beneden over */
-    padding: 30px 24px 130px !important; 
-    background: rgba(16, 16, 15, 0.55);
+    flex: 1; 
+    padding: 45px 24px 130px !important; /* Ruime bovenpadding zodat de tekst onder de overgang valt */
+    background: linear-gradient(180deg, rgba(16, 16, 15, 0) 0%, rgba(16, 16, 15, 0.75) 15%, rgba(16, 16, 15, 0.88) 100%), rgba(16, 16, 15, 0.85);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-left: 1px solid rgba(255, 255, 255, 0.04);
-    border-right: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 0; /* Exact recht voor dat continue kolom-gevoel over de hele site */
-    box-shadow: none; /* Geen schaduw meer nodig op glas */
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px 28px 0 0; /* Ronde hoeken boven, strak beneden voor het doorlopende kolom-effect */
+    box-shadow: 0 -15px 35px rgba(0,0,0,0.5);
     box-sizing: border-box;
     transform: none !important;
     justify-content: flex-start;
-    overflow-y: auto; /* Absolute garantie dat tekst in 'About me' nooit meer afsnijdt */
+    overflow-y: auto; 
   }
   
   .scene-content::-webkit-scrollbar {
     display: none;
   }
   
-  /* De Hero tekst sectie (scene 1) strak in het midden */
+  /* Hero-sectie (scene 1) strak in het midden uitgelijnd */
   .scene-one .scene-content {
     align-items: center;
     text-align: center;
   }
   
   .scene h1, h2 {
-    font-size: clamp(34px, 9.5vw, 48px); /* Marginaal kleiner gemaakt, zo breekt "Atmosphere" altijd veilig */
+    font-size: clamp(34px, 9.5vw, 48px);
     word-break: keep-all;
   }
   
   .byline {
-    margin: 20px 0 40px; /* Iets compacter op mobiel in de hero sectie */
+    margin: 20px 0 40px; 
   }
   
   .split-content {
@@ -622,7 +622,6 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Paginanummer blijft gefixeerd hangen */
   .frame-number {
     position: absolute;
     right: 24px;
@@ -656,7 +655,7 @@ body.lightbox-open { overflow: hidden; }
     bottom: 130px;
   }
 
-  /* Galerij blijft bovenop alles strak onderin staan */
+  /* Fotogalerij blijft strak onderin gefixeerd */
   .portfolio-rail {
     position: fixed;
     top: auto;
