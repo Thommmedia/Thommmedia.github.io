@@ -511,7 +511,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - De Nieuwe Fix --- */
+/* --- Mobile Layout - De Uniforme Zuil --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -538,41 +538,49 @@ body.lightbox-open { overflow: hidden; }
     display: flex;
     flex-direction: column;
     background: #10100f;
+    position: relative;
   }
   
-  /* Foto neemt nu de bovenste 60% in. Dit blijft onaangetast en kraakhelder. */
+  /* Foto vult veilig de bovenste 62% */
   .scene-image {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 60vh;
+    height: 62vh;
     transform: scale(1.02);
   }
   
-  /* Zwarte waas is compleet uitgezet op mobiel */
   .shade {
     display: none; 
   }
   
-  /* De Liquid Glass over de onderste helft */
+  /* De Uniforme Glazen Zuil - Exact hetzelfde op ELKE sectie */
   .scene-content {
     position: relative;
     z-index: 2;
-    margin-top: 50vh; /* Schuift 10% over de foto voor de blur-overgang, zonder de foto weg te drukken */
-    padding: 35px 24px 140px; /* 140px houdt de tekst perfect weg van de galerij */
-    background: rgba(16, 16, 15, 0.45);
+    margin-top: 52vh; /* Schuift soepel 10vh over de foto */
+    margin-left: 12px; /* Strakke offset van de zijkanten */
+    margin-right: 12px;
+    width: calc(100% - 24px); /* Exacte en identieke breedte op elke pagina */
+    padding: 35px 24px 140px !important; /* Forceert de inhoud weg van de galerij */
+    background: rgba(16, 16, 15, 0.55);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-top: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 24px 24px 0 0;
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.04);
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px 24px 0 0; /* Alleen boven ronde hoeken, onderkant is plat en loopt door */
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.35);
+    box-sizing: border-box;
     transform: none !important;
     justify-content: flex-start;
   }
   
+  /* Titels iets geschaald zodat ze mooi binnen de nieuwe 12px marges passen */
   .scene h1, h2, .scene-five h2 {
-    font-size: clamp(42px, 11vw, 56px);
+    font-size: clamp(38px, 10vw, 52px);
+    word-break: keep-all;
   }
   
   .split-content {
@@ -597,6 +605,7 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
+  /* Lijn het getal uit op de glazen zuil, net boven de bodem */
   .frame-number {
     position: absolute;
     right: 24px;
@@ -629,7 +638,7 @@ body.lightbox-open { overflow: hidden; }
     bottom: 130px;
   }
 
-  /* Galerijbalk gefixeerd op de absolute onderkant in solide zwart */
+  /* De zwarte galerijbalk, altijd veilig onderop over de glazen wand heen */
   .portfolio-rail {
     position: fixed;
     top: auto;
