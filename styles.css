@@ -511,7 +511,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Concept 2 (Floating Glass Overlay) --- */
+/* --- Mobile Layout - De Nieuwe Fix --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -532,46 +532,43 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Achtergrond is donker, zodat de onderkant achter het glas strak zwart oogt */
   .scene, .scene-five {
     height: 100vh;
     min-height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
     background: #10100f;
   }
   
-  /* Foto neemt nu de bovenste 65% van het scherm in. Daardoor wordt hij in de breedte aanzienlijk minder afgesneden! */
+  /* Foto neemt nu de bovenste 60% in. Dit blijft onaangetast en kraakhelder. */
   .scene-image {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: auto;
-    height: 65vh;
+    height: 60vh;
     transform: scale(1.02);
   }
   
-  /* De zware zwarte schaduw over de hele foto is verwijderd */
+  /* Zwarte waas is compleet uitgezet op mobiel */
   .shade {
     display: none; 
   }
   
-  /* Dit is het zwevende glazen paneel dat over de onderste rand van de foto schuift */
+  /* De Liquid Glass over de onderste helft */
   .scene-content {
     position: relative;
     z-index: 2;
-    flex: none;
-    margin-top: auto;
-    padding: 40px 24px 135px; /* Ruimte voor de galerij aan de onderkant */
-    background: rgba(16, 16, 15, 0.65);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-top: 1px solid rgba(244, 242, 237, 0.12);
-    border-radius: 28px 28px 0 0;
-    justify-content: flex-start;
+    margin-top: 50vh; /* Schuift 10% over de foto voor de blur-overgang, zonder de foto weg te drukken */
+    padding: 35px 24px 140px; /* 140px houdt de tekst perfect weg van de galerij */
+    background: rgba(16, 16, 15, 0.45);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.4);
     transform: none !important;
+    justify-content: flex-start;
   }
   
   .scene h1, h2, .scene-five h2 {
@@ -600,7 +597,6 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Paginanummer staat nu strak in de glazen kaart */
   .frame-number {
     position: absolute;
     right: 24px;
@@ -633,7 +629,7 @@ body.lightbox-open { overflow: hidden; }
     bottom: 130px;
   }
 
-  /* Galerijbalk op mobiel is nu weer solide zwart, zweeft veilig over het glazen paneel heen */
+  /* Galerijbalk gefixeerd op de absolute onderkant in solide zwart */
   .portfolio-rail {
     position: fixed;
     top: auto;
@@ -649,6 +645,7 @@ body.lightbox-open { overflow: hidden; }
     gap: 12px;
     background: #10100f;
     pointer-events: none;
+    z-index: 20;
   }
 
   .portfolio-rail::before {
