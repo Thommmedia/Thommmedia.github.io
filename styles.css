@@ -511,7 +511,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - V3 (Perfecte Liquid Glass Overgang & Gecentreerde Hero) --- */
+/* --- Mobile Layout - De Juiste Boekenlegger & Glazen Overgang --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -541,7 +541,7 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
-  /* Foto vult de bovenste 42% */
+  /* Foto vult de bovenste 42% en ligt als een foto óver de kaart heen geschoven */
   .scene-image {
     position: absolute;
     top: 0;
@@ -550,31 +550,33 @@ body.lightbox-open { overflow: hidden; }
     height: 42vh;
     width: 100%;
     transform: none;
-    z-index: 1;
+    z-index: 2; /* Ligt BOVENOP de boekenlegger-kaart */
+    pointer-events: none;
   }
   
   .shade {
     display: none; 
   }
   
-  /* De Liquid Glass Zuil schuift eroverheen met een prachtige organische fade-overgang aan de bovenkant */
+  /* De Liquid Glass Boekenlegger-kaart */
   .scene-content {
     position: relative;
-    z-index: 2;
-    margin-top: 36vh; /* Start al iets hoger over de foto heen */
+    z-index: 1; /* Schuift onder de foto vandaan */
+    margin-top: 34vh; /* Begint al onder de foto en loopt door tot onderin */
     margin-left: 8px; 
     margin-right: 8px;
     width: calc(100% - 16px);
     flex: 1; 
-    padding: 45px 24px 130px !important; /* Ruime bovenpadding zodat de tekst onder de overgang valt */
-    background: linear-gradient(180deg, rgba(16, 16, 15, 0) 0%, rgba(16, 16, 15, 0.75) 15%, rgba(16, 16, 15, 0.88) 100%), rgba(16, 16, 15, 0.85);
+    padding: 55px 24px 130px !important; /* Ruime bovenpadding zodat tekst onder de foto valt */
+    /* De lichte gradient: bovenaan glaziger/transparanter (rode cirkel in je feedback), naar beneden toe egaler */
+    background: linear-gradient(180deg, rgba(16, 16, 15, 0.15) 0%, rgba(16, 16, 15, 0.65) 25%, rgba(16, 16, 15, 0.86) 100%);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 28px 28px 0 0; /* Ronde hoeken boven, strak beneden voor het doorlopende kolom-effect */
-    box-shadow: 0 -15px 35px rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.5);
     box-sizing: border-box;
     transform: none !important;
     justify-content: flex-start;
@@ -585,7 +587,16 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Hero-sectie (scene 1) strak in het midden uitgelijnd */
+  /* Zorg dat de boekenleggerwerking voor ELKE sectie gelijk is en netjes onder de foto schuift */
+  .scene-two .scene-content,
+  .scene-three .scene-content,
+  .scene-four .scene-content,
+  .scene-five .scene-content {
+    margin-top: 34vh;
+    padding-top: 55px !important;
+  }
+  
+  /* Hero-sectie (scene 1) strak in het midden uitgelijnd zoals gevraagd */
   .scene-one .scene-content {
     align-items: center;
     text-align: center;
@@ -655,7 +666,7 @@ body.lightbox-open { overflow: hidden; }
     bottom: 130px;
   }
 
-  /* Fotogalerij blijft strak onderin gefixeerd */
+  /* Fotogalerij blijft vast onderin staan */
   .portfolio-rail {
     position: fixed;
     top: auto;
