@@ -74,7 +74,7 @@ body {
   color: var(--accent);
 }
 
-.scene {
+.scene, .scene-five {
   height: 100vh;
   min-height: 650px;
   position: relative;
@@ -95,10 +95,6 @@ body {
 .scene-four .scene-image { background-image: url('assets/web/spa-atmosphere.jpg'); }
 .scene-five .scene-image { background-image: url('assets/web/spa-moment.jpg'); }
 
-.scene-four {
-  height: 100vh;
-  min-height: 650px;
-}
 .scene-four .scene-image {
   background-position: center bottom;
 }
@@ -137,7 +133,7 @@ body {
   margin: 0 0 28px;
 }
 
-.scene h1, h2 {
+.scene h1, h2, .scene-five h2 {
   font-size: clamp(58px, 8.5vw, 124px);
   font-weight: 500;
   letter-spacing: -.085em;
@@ -436,6 +432,8 @@ body.lightbox-open { overflow: hidden; }
     flex: 1 1 auto; 
     height: 100%;
     margin: 5px 0;
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56px, rgba(0,0,0,1) 100%);
   }
   
   .rail-track::-webkit-scrollbar {
@@ -503,7 +501,6 @@ body.lightbox-open { overflow: hidden; }
   .rail-next:hover { transform: translateY(4px) scale(1.08); }
 }
 
-/* Tablet optimalisatie: Zorgt dat tekst op smalle desktop-vensters niet extreem in elkaar drukt */
 @media (max-width: 1024px) and (min-width: 721px) {
   .split-content {
     grid-template-columns: 1fr;
@@ -514,7 +511,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout --- */
+/* --- Mobile Layout (volledig hersteld naar 100vh afbeeldingen) --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -523,7 +520,7 @@ body.lightbox-open { overflow: hidden; }
   
   .header {
     height: 70px;
-    background: linear-gradient(180deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0) 100%);
+    background: linear-gradient(180deg, rgba(10, 10, 9, 0.8) 0%, rgba(10, 10, 9, 0) 100%);
     border-bottom: none;
   }
   
@@ -535,34 +532,44 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Mobiel krijgt nu óók de indrukwekkende full-screen layouts! */
-  .scene {
+  /* Reset scene naar de originele filmische full-screen modus */
+  .scene, .scene-five {
     height: 100vh;
     min-height: 600px;
+    display: block; 
   }
   
-  /* De schaduwlaag op mobiel loopt van boven naar beneden, dit maakt de tekst onderaan optimaal leesbaar */
+  .scene-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    transform: scale(1.02);
+  }
+  
+  /* Vloeiende gradiënt van onder naar boven zodat de foto zichtbaar blijft maar tekst perfect leesbaar is */
   .shade {
-    background: linear-gradient(180deg, rgba(6,6,6,0.1) 0%, rgba(6,6,6,0.7) 60%, rgba(6,6,6,0.95) 100%);
+    display: block;
+    background: linear-gradient(180deg, rgba(10,10,9,0.05) 0%, rgba(10,10,9,0.5) 50%, rgba(10,10,9,0.95) 100%);
   }
   
   .scene-two .shade, .scene-four .shade {
-    background: linear-gradient(180deg, rgba(6,6,6,0.2) 0%, rgba(6,6,6,0.8) 60%, rgba(6,6,6,0.98) 100%);
+    background: linear-gradient(180deg, rgba(10,10,9,0.15) 0%, rgba(10,10,9,0.7) 55%, rgba(10,10,9,0.98) 100%);
   }
   
-  /* Tekst in de secties wordt naar onderen geschoven en vrijgehouden van de galerij */
+  /* Tekst staat weer perfect in de overgebleven ruimte boven de galerij */
   .scene-content {
     padding-top: 80px;
-    padding-bottom: 150px; 
-    justify-content: flex-end; 
-    transform: none;
+    padding-bottom: 140px; 
+    justify-content: flex-end;
+    transform: none !important;
   }
   
-  .scene h1, h2, .contact h2 {
-    font-size: clamp(48px, 12vw, 64px);
+  .scene h1, h2, .scene-five h2 {
+    font-size: clamp(46px, 12vw, 64px);
   }
   
-  /* Dit lost het "doorlopende tekst" probleem op: de tekst wordt niet langer samengedrukt tot een piepklein kolommetje, maar krijgt de volledige breedte onder de titel! */
+  /* Zorgt ervoor dat titels en tekstblokken netjes breed onder elkaar doorlopen op mobiel */
   .split-content {
     display: flex;
     flex-direction: column;
@@ -578,16 +585,18 @@ body.lightbox-open { overflow: hidden; }
     font-size: 15px;
     line-height: 1.6;
     margin-top: 0;
+    color: #ffffff;
   }
   
   .scene-three .scene-copy {
     margin-top: 15px;
   }
   
+  /* Zwevend vast paginanummer, exact uitgelijnd vlak boven de zwarte galerij-balk */
   .frame-number {
     position: absolute;
     right: 20px;
-    bottom: 135px;
+    bottom: 130px; 
     margin: 0;
   }
   
@@ -613,45 +622,42 @@ body.lightbox-open { overflow: hidden; }
   }
 
   .contact .frame-number {
-    bottom: 135px;
+    bottom: 130px;
   }
 
-  /* Galerij blijft onderaan op mobiel en de transparante mask is verwijderd */
+  /* Galerijbalk op mobiel is nu weer solide zwart, zonder fadetrucs, precies zoals in je screenshots */
   .portfolio-rail {
     position: fixed;
-    z-index: 20;
+    top: auto;
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
     height: 112px;
     padding: 10px 20px 15px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 12px;
-    background: rgba(10, 10, 9, 0.98);
+    background: #10100f;
     pointer-events: none;
   }
 
+  /* Verbergt de fade op mobiel */
   .portfolio-rail::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background: linear-gradient(0deg, rgba(10, 10, 9, 0.98) 0%, rgba(10, 10, 9, 0) 100%);
-    pointer-events: none;
+    display: none; 
   }
   
   .rail-label {
-    width: 83px;
+    width: 75px;
     font-size: 9px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     color: var(--fg);
     flex: none;
-    padding-bottom: 2px;
+    padding: 0;
+    margin: 0;
     transform: translateY(2px);
   }
   
@@ -662,14 +668,22 @@ body.lightbox-open { overflow: hidden; }
   
   .rail-next, .rail-prev { display: none; }
 
+  /* Desktop maskers zijn hier verwijderd, alles scrolt horizontaal schoon in beeld */
   .rail-track {
     display: flex;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    flex: 1;
+    margin: 0;
     gap: 10px;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     pointer-events: auto;
-    width: auto;
+    -webkit-mask-image: none;
+    mask-image: none; 
   }
   
   .rail-track::-webkit-scrollbar {
@@ -685,6 +699,7 @@ body.lightbox-open { overflow: hidden; }
     scroll-snap-align: start;
     overflow: hidden;
     border: 1px solid transparent;
+    margin-bottom: 0;
   }
   
   .rail-track img {
