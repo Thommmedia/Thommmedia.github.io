@@ -95,6 +95,10 @@ body {
 .scene-four .scene-image { background-image: url('assets/web/spa-atmosphere.jpg'); }
 .scene-five .scene-image { background-image: url('assets/web/spa-moment.jpg'); }
 
+.scene-four {
+  height: 100vh;
+  min-height: 650px;
+}
 .scene-four .scene-image {
   background-position: center bottom;
 }
@@ -511,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - De Juiste Boekenlegger & Glazen Overgang --- */
+/* --- Mobile Layout - Echte Liquid Glass Boekenlegger per Sectie --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -541,7 +545,7 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
-  /* Foto vult de bovenste 42% en ligt als een foto óver de kaart heen geschoven */
+  /* Foto vult de bovenste 42% en ligt fysiek BOVENOP de boekenlegger */
   .scene-image {
     position: absolute;
     top: 0;
@@ -550,33 +554,32 @@ body.lightbox-open { overflow: hidden; }
     height: 42vh;
     width: 100%;
     transform: none;
-    z-index: 2; /* Ligt BOVENOP de boekenlegger-kaart */
-    pointer-events: none;
+    z-index: 2; /* Ligt OVER het glas heen, zodat de bovenkant strak onder de foto schuift */
   }
   
   .shade {
     display: none; 
   }
   
-  /* De Liquid Glass Boekenlegger-kaart */
+  /* De Boekenlegger / Liquid Glass Kaart per sectie */
   .scene-content {
     position: relative;
-    z-index: 1; /* Schuift onder de foto vandaan */
-    margin-top: 34vh; /* Begint al onder de foto en loopt door tot onderin */
+    z-index: 1; /* Ligt ONDER de foto, waardoor de foto netjes over de bovenrand van het glas valt */
+    margin-top: 36vh; /* Start hoger, zodat de bovenkant achter de foto verdwijnt als een boekenlegger */
     margin-left: 8px; 
     margin-right: 8px;
     width: calc(100% - 16px);
     flex: 1; 
-    padding: 55px 24px 130px !important; /* Ruime bovenpadding zodat tekst onder de foto valt */
-    /* De lichte gradient: bovenaan glaziger/transparanter (rode cirkel in je feedback), naar beneden toe egaler */
-    background: linear-gradient(180deg, rgba(16, 16, 15, 0.15) 0%, rgba(16, 16, 15, 0.65) 25%, rgba(16, 16, 15, 0.86) 100%);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 28px 28px 0 0;
-    box-shadow: 0 -15px 40px rgba(0,0,0,0.5);
+    padding: 45px 24px 130px !important; 
+    /* Echte transparante Liquid Glass styling met subtiele glazige gradiënt */
+    background: linear-gradient(180deg, rgba(16, 16, 15, 0) 0%, rgba(16, 16, 15, 0.45) 15%, rgba(16, 16, 15, 0.65) 100%), rgba(16, 16, 15, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px 28px 0 0; /* Ronde hoeken boven, strak onderin */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
     box-sizing: border-box;
     transform: none !important;
     justify-content: flex-start;
@@ -587,16 +590,7 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Zorg dat de boekenleggerwerking voor ELKE sectie gelijk is en netjes onder de foto schuift */
-  .scene-two .scene-content,
-  .scene-three .scene-content,
-  .scene-four .scene-content,
-  .scene-five .scene-content {
-    margin-top: 34vh;
-    padding-top: 55px !important;
-  }
-  
-  /* Hero-sectie (scene 1) strak in het midden uitgelijnd zoals gevraagd */
+  /* Hero-sectie (scene 1) strak in het midden uitgelijnd */
   .scene-one .scene-content {
     align-items: center;
     text-align: center;
@@ -666,7 +660,7 @@ body.lightbox-open { overflow: hidden; }
     bottom: 130px;
   }
 
-  /* Fotogalerij blijft vast onderin staan */
+  /* Fotogalerij blijft strak onderin gefixeerd */
   .portfolio-rail {
     position: fixed;
     top: auto;
