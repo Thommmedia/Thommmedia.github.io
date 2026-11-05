@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout --- */
+/* --- Mobile Layout - Finaal Gecentreerd, Exacte Breedte & Screenshot Perfect --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -536,7 +536,7 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Flexibele hoogte zodat lange tekst NOOIT overlapt of knipt */
+  /* Flexibele secties voor de perfecte boekenlegger overlap */
   .scene {
     min-height: 100vh;
     height: auto;
@@ -546,20 +546,19 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
-  /* Overlap van elke sectie t.o.v. de vorige is nu 10vh */
+  /* OVERLAP: Trek de volgende sectie omhoog om onder het huidige glazen blok te schuiven */
   main > section.scene + section.scene {
-    margin-top: -10vh; 
+    margin-top: -12vh; 
   }
   
-  /* Contact sectie schuift nu EXACT als een foto BOVENOP de glazen box van scene-five */
   main > section.scene + section.contact {
-    margin-top: -10vh;
+    margin-top: -12vh;
     position: relative;
     z-index: 2;
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); /* Zorgt voor dieptewerking over het glas */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); 
   }
   
-  /* Foto's liggen standaard OVER het glas heen, als boekenlegger overlap */
+  /* FOTO'S: 38% hoog, strak horizontaler afgesneden */
   .scene-image {
     position: absolute;
     top: 0;
@@ -576,33 +575,38 @@ body.lightbox-open { overflow: hidden; }
     display: none; 
   }
   
-  /* De Glazen Kaart per sectie */
+  /* DE BOEKENLEGGER (Glazen Blokken) */
   .scene-content {
     position: relative;
     z-index: 1; 
-    margin-top: 28vh; 
-    /* Iets breder voor extra tekst-ruimte */
-    margin-left: 4px; 
-    margin-right: 4px;
-    width: calc(100% - 8px);
+    margin-top: 26vh; /* Start veilig 12vh BOVEN de onderrand van de foto (38vh - 26vh = 12vh) */
+    margin-left: 16px; /* Exacte marge van je screenshot hersteld */
+    margin-right: 16px;
+    width: calc(100% - 32px); /* Correcte, strakkere breedte */
     flex: 1; 
-    padding: 12vh 20px calc(150px + 10vh) !important; /* Veilige bodempadding om de frame-numbers te vermijden */
     
-    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(16,16,15,0.4) 15%, rgba(16,16,15,0.4) 100%);
+    /* WISKUNDIGE CENTERING: 
+       Boven is 12vh overlapt door de foto. Onder is 12vh overlapt + 112px galerij.
+       Dit vereffent de padding exact, zodat de tekst 100% in het midden staat van het VRIJE glas! */
+    padding: calc(12vh + 25px) 24px calc(12vh + 112px + 25px) !important; 
+    
+    background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(16,16,15,0.4) 15%, rgba(16,16,15,0.4) 85%, rgba(0,0,0,0.85) 100%);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 0; 
     box-shadow: none;
     box-sizing: border-box;
     transform: none !important;
-    justify-content: flex-start;
-    overflow: hidden; /* Scroll in tekstvak is veilig vergrendeld */
+    
+    /* Zorgt voor perfecte verticale groepering in het midden */
+    justify-content: center; 
+    align-items: flex-start;
+    overflow: hidden; 
   }
   
-  /* HERO SECTIE (IMG_6642.jpg): Ligt over de foto, heeft ronde hoeken en tekst links uitgelijnd */
+  /* HERO SECTIE: EXACT zoals IMG_6641_2.PNG (Ronde hoeken, padding, 'Scroll' onderaan) */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -610,17 +614,24 @@ body.lightbox-open { overflow: hidden; }
   
   .scene-one .scene-content {
     z-index: 2; 
-    margin-top: 36vh;
+    margin-top: 34vh;
+    /* Opmaak uit screenshot hersteld */
     padding-top: 45px !important;
-    padding-bottom: 160px !important;
-    border-radius: 24px 24px 0 0; 
+    padding-bottom: calc(112px + 30px) !important; 
+    border-radius: 20px 20px 0 0; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     background: linear-gradient(180deg, rgba(16, 16, 15, 0.2) 0%, rgba(16, 16, 15, 0.45) 20%, rgba(16, 16, 15, 0.55) 100%);
-    align-items: flex-start; /* Teruggezet naar exact de linkerzijde */
-    text-align: left; /* Teruggezet naar exact de linkerzijde */
+    
+    /* Tekst blijft links bovenaan vaststaan zoals in screenshot */
+    justify-content: flex-start;
   }
   
-  /* Font size tikkeltje geschaald, nu past 'atmosphere' perfect */
+  /* Duwt de 'SCROLL TO EXPLORE' knop exact naar de bodem, net boven de galerij */
+  .scene-one .next {
+    margin-top: auto; 
+    margin-bottom: 20px; 
+  }
+  
   .scene h1, h2 {
     font-size: clamp(32px, 8.5vw, 44px); 
     word-break: keep-all;
@@ -652,13 +663,21 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Frame-nummer perfect veilig uitgelijnd, ver boven de zwarte bodem overlap */
+  /* Frame getal staat nu altijd perfect en veilig los van the overlaps */
   .frame-number {
     position: absolute;
-    right: 24px;
-    bottom: calc(125px + 10vh); 
+    right: 32px;
+    bottom: calc(112px + 12vh + 25px); 
     margin: 0;
     z-index: 3;
+  }
+  
+  .scene-one .frame-number {
+    bottom: calc(112px + 12vh + 50px);
+  }
+  
+  .contact .frame-number {
+    bottom: calc(112px + 30px);
   }
   
   .service-line {
@@ -682,12 +701,7 @@ body.lightbox-open { overflow: hidden; }
     padding-bottom: 112px; 
   }
 
-  /* Het frame getal in contact is onveranderd (heeft geen overlap hierna) */
-  .contact .frame-number {
-    bottom: 130px;
-  }
-
-  /* Fotogalerij blijft strak onderin gefixeerd */
+  /* Zwarte vaste galerij footer - 100% onveranderd */
   .portfolio-rail {
     position: fixed;
     top: auto;
