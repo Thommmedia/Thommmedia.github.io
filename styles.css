@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Boekenlegger Effect Volledig Gefixt --- */
+/* --- Mobile Layout --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -536,95 +536,93 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Container van de secties: Verhoogde min-height zodat lange tekst NOOIT klem zit */
+  /* Flexibele hoogte zodat lange tekst NOOIT overlapt of knipt */
   .scene {
-    height: 100vh;
-    min-height: 650px; 
+    min-height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     background: #10100f;
     position: relative;
   }
   
-  /* OVERLAP-FIX: Trek de volgende sectie omhoog, BEHALVE de contact sectie */
-  main > section + section:not(.contact) {
-    margin-top: -12vh;
+  /* Overlap van elke sectie t.o.v. de vorige is nu 10vh */
+  main > section.scene + section.scene {
+    margin-top: -10vh; 
   }
   
-  /* CROP-FIX: Foto's vullen nu 36% (iets horizontaler afgesneden voor extra tekst-ruimte) */
+  /* Contact sectie schuift nu EXACT als een foto BOVENOP de glazen box van scene-five */
+  main > section.scene + section.contact {
+    margin-top: -10vh;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); /* Zorgt voor dieptewerking over het glas */
+  }
+  
+  /* Foto's liggen standaard OVER het glas heen, als boekenlegger overlap */
   .scene-image {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 36vh;
+    height: 38vh;
     width: 100%;
     transform: none;
-    z-index: 2; /* Ligt OVER de tekst-kaart heen (behalve bij de Hero) */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.65); /* Werpt een lichte schaduw op de tekst-kaart eronder */
+    z-index: 2; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.65); 
   }
   
   .shade {
     display: none; 
   }
   
-  /* De Boekenlegger / Tekst-kaart per sectie (Secties 2 t/m 4) */
+  /* De Glazen Kaart per sectie */
   .scene-content {
     position: relative;
-    z-index: 1; /* Ligt VERBORGEN onder de foto van 36vh */
-    margin-top: 25vh; /* Begint bewust al hoger achter de foto */
-    margin-left: 8px; 
-    margin-right: 8px;
-    width: calc(100% - 16px);
+    z-index: 1; 
+    margin-top: 28vh; 
+    /* Iets breder voor extra tekst-ruimte */
+    margin-left: 4px; 
+    margin-right: 4px;
+    width: calc(100% - 8px);
     flex: 1; 
+    padding: 12vh 20px calc(150px + 10vh) !important; /* Veilige bodempadding om de frame-numbers te vermijden */
     
-    /* FIX: Top-padding enorm gereduceerd (was 16vh, is nu 45px). Hierdoor krijgt de tekst véél meer ruimte! */
-    padding: 45px 24px calc(125px + 12vh) !important; 
-    
-    /* Liquid Glass met donkere schaduw aan boven- en onderkant (Boekenlegger illusie) */
-    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(16,16,15,0.2) 15%, rgba(16,16,15,0.2) 85%, rgba(0,0,0,0.85) 100%);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(16,16,15,0.4) 15%, rgba(16,16,15,0.4) 100%);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 0; /* Strakke rechte boekenlegger per sectie */
+    border-radius: 0; 
     box-shadow: none;
     box-sizing: border-box;
     transform: none !important;
     justify-content: flex-start;
-    
-    /* SCROLL-FIX: Tekst stuitert niet meer intern */
-    overflow: hidden; 
+    overflow: hidden; /* Scroll in tekstvak is veilig vergrendeld */
   }
   
-  /* Uitzondering voor Hero-sectie: EXACT als je screenshot (Links uitgelijnd, helder glas, bovenop de foto) */
+  /* HERO SECTIE (IMG_6642.jpg): Ligt over de foto, heeft ronde hoeken en tekst links uitgelijnd */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
   }
   
   .scene-one .scene-content {
-    z-index: 2; /* Ligt over de hero foto heen */
-    margin-top: 32vh;
+    z-index: 2; 
+    margin-top: 36vh;
     padding-top: 45px !important;
-    border-radius: 24px 24px 0 0;
-    
-    /* Schoon, helder glas zonder de donkere boekenlegger randen */
-    background: rgba(16, 16, 15, 0.65); 
-    
-    /* Alignering direct zoals in het screenshot */
-    align-items: flex-start;
-    text-align: left;
+    padding-bottom: 160px !important;
+    border-radius: 24px 24px 0 0; 
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(180deg, rgba(16, 16, 15, 0.2) 0%, rgba(16, 16, 15, 0.45) 20%, rgba(16, 16, 15, 0.55) 100%);
+    align-items: flex-start; /* Teruggezet naar exact de linkerzijde */
+    text-align: left; /* Teruggezet naar exact de linkerzijde */
   }
   
-  /* Verberg 'Scroll to explore' pijl op mobiel, net als in het screenshot */
-  .scene-one .next {
-    display: none; 
-  }
-  
+  /* Font size tikkeltje geschaald, nu past 'atmosphere' perfect */
   .scene h1, h2 {
-    font-size: clamp(34px, 9.5vw, 48px);
+    font-size: clamp(32px, 8.5vw, 44px); 
     word-break: keep-all;
   }
   
@@ -654,11 +652,11 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Frame getal staat veilig bovenaan de 12vh overlap-rand */
+  /* Frame-nummer perfect veilig uitgelijnd, ver boven de zwarte bodem overlap */
   .frame-number {
     position: absolute;
     right: 24px;
-    bottom: calc(125px + 12vh); 
+    bottom: calc(125px + 10vh); 
     margin: 0;
     z-index: 3;
   }
@@ -669,20 +667,9 @@ body.lightbox-open { overflow: hidden; }
     line-height: 1.5;
   }
 
-  /* --- FIX OVERGANG NAAR CONTACTPAGINA --- */
-  
-  /* Sectie 5 ('What I do') krijgt GEEN donkere schaduw aan de onderkant, anders botst dit lelijk met groen */
-  .scene-five .scene-content {
-    background: rgba(16, 16, 15, 0.65); /* Schoon glas, net als de hero */
-    padding-bottom: 125px !important; /* Geen overlap-padding nodig want er komt niks meer onder */
-  }
-  
-  /* Contact Sectie strak eronder, zonder negatieve margins of rare overlaps */
   .contact {
-    margin-top: 0 !important; 
-    z-index: 10;
-    height: 100vh;
-    min-height: 550px;
+    min-height: 100vh;
+    height: auto;
     padding: 0;
     background: var(--accent);
     display: flex;
@@ -695,12 +682,12 @@ body.lightbox-open { overflow: hidden; }
     padding-bottom: 112px; 
   }
 
-  /* Het frame getal in de laatste sectie krijgt geen overlap correctie omdat er niks meer onder komt */
+  /* Het frame getal in contact is onveranderd (heeft geen overlap hierna) */
   .contact .frame-number {
     bottom: 130px;
   }
 
-  /* Fotogalerij blijft strak onderin gefixeerd (100% onveranderd) */
+  /* Fotogalerij blijft strak onderin gefixeerd */
   .portfolio-rail {
     position: fixed;
     top: auto;
