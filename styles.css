@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Finaal Gecentreerd, Exacte Breedte & Screenshot Perfect --- */
+/* --- Mobile Layout - Finaal Gecentreerd, Exacte Breedte & 20px Naar Beneden --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -575,20 +575,17 @@ body.lightbox-open { overflow: hidden; }
     display: none; 
   }
   
-  /* DE BOEKENLEGGER (Glazen Blokken) */
+  /* DE BOEKENLEGGER (Glazen Blokken) - Nu met 20px neerwaartse shift (Top padding +20px, Bottom padding -20px) */
   .scene-content {
     position: relative;
     z-index: 1; 
-    margin-top: 26vh; /* Start veilig 12vh BOVEN de onderrand van de foto (38vh - 26vh = 12vh) */
-    margin-left: 16px; /* Exacte marge van je screenshot hersteld */
+    margin-top: 26vh; 
+    margin-left: 16px; 
     margin-right: 16px;
-    width: calc(100% - 32px); /* Correcte, strakkere breedte */
+    width: calc(100% - 32px); 
     flex: 1; 
     
-    /* WISKUNDIGE CENTERING: 
-       Boven is 12vh overlapt door de foto. Onder is 12vh overlapt + 112px galerij.
-       Dit vereffent de padding exact, zodat de tekst 100% in het midden staat van het VRIJE glas! */
-    padding: calc(12vh + 25px) 24px calc(12vh + 112px + 25px) !important; 
+    padding: calc(12vh + 45px) 24px calc(12vh + 112px + 5px) !important; 
     
     background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(16,16,15,0.4) 15%, rgba(16,16,15,0.4) 85%, rgba(0,0,0,0.85) 100%);
     backdrop-filter: blur(25px);
@@ -600,13 +597,12 @@ body.lightbox-open { overflow: hidden; }
     box-sizing: border-box;
     transform: none !important;
     
-    /* Zorgt voor perfecte verticale groepering in het midden */
     justify-content: center; 
     align-items: flex-start;
     overflow: hidden; 
   }
   
-  /* HERO SECTIE: EXACT zoals IMG_6641_2.PNG (Ronde hoeken, padding, 'Scroll' onderaan) */
+  /* HERO SECTIE: EXACT zoals IMG_6641_2.PNG (Ronde hoeken, padding, 'Scroll' onderaan), ook 20px verlaagd */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -615,18 +611,14 @@ body.lightbox-open { overflow: hidden; }
   .scene-one .scene-content {
     z-index: 2; 
     margin-top: 34vh;
-    /* Opmaak uit screenshot hersteld */
-    padding-top: 45px !important;
-    padding-bottom: calc(112px + 30px) !important; 
+    padding-top: 65px !important;
+    padding-bottom: calc(112px + 10px) !important; 
     border-radius: 20px 20px 0 0; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     background: linear-gradient(180deg, rgba(16, 16, 15, 0.2) 0%, rgba(16, 16, 15, 0.45) 20%, rgba(16, 16, 15, 0.55) 100%);
-    
-    /* Tekst blijft links bovenaan vaststaan zoals in screenshot */
     justify-content: flex-start;
   }
   
-  /* Duwt de 'SCROLL TO EXPLORE' knop exact naar de bodem, net boven de galerij */
   .scene-one .next {
     margin-top: auto; 
     margin-bottom: 20px; 
@@ -663,21 +655,21 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Frame getal staat nu altijd perfect en veilig los van the overlaps */
+  /* Frame getallen - exact 20px meegeschoven naar beneden */
   .frame-number {
     position: absolute;
     right: 32px;
-    bottom: calc(112px + 12vh + 25px); 
+    bottom: calc(112px + 12vh + 5px); 
     margin: 0;
     z-index: 3;
   }
   
   .scene-one .frame-number {
-    bottom: calc(112px + 12vh + 50px);
+    bottom: calc(112px + 12vh + 30px);
   }
   
   .contact .frame-number {
-    bottom: calc(112px + 30px);
+    bottom: calc(112px + 10px);
   }
   
   .service-line {
@@ -686,6 +678,7 @@ body.lightbox-open { overflow: hidden; }
     line-height: 1.5;
   }
 
+  /* Contact Blok - Ook visueel exact 20px naar beneden geschoven */
   .contact {
     min-height: 100vh;
     height: auto;
@@ -698,7 +691,8 @@ body.lightbox-open { overflow: hidden; }
   
   .contact-content {
     justify-content: center;
-    padding-bottom: 112px; 
+    padding-top: 20px;
+    padding-bottom: 92px; 
   }
 
   /* Zwarte vaste galerij footer - 100% onveranderd */
