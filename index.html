@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=34" />
+  <link rel="stylesheet" href="styles.css?v=35" />
 </head>
 <body>
   <header class="header shell">
@@ -133,62 +133,4 @@
           updateLightbox(index);
           lightbox.hidden = false;
           document.body.classList.add('lightbox-open');
-          requestAnimationFrame(() => lightbox.classList.add('is-open'));
-          closeButton.focus();
-        });
-      });
-
-      const showPrev = (e) => {
-        if (e) e.stopPropagation();
-        const newIndex = (currentIndex === 0) ? links.length - 1 : currentIndex - 1;
-        updateLightbox(newIndex);
-      };
-
-      const showNext = (e) => {
-        if (e) e.stopPropagation();
-        const newIndex = (currentIndex === links.length - 1) ? 0 : currentIndex + 1;
-        updateLightbox(newIndex);
-      };
-
-      prevButton.addEventListener('click', showPrev);
-      nextButton.addEventListener('click', showNext);
-      closeButton.addEventListener('click', closeLightbox);
-      
-      lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) closeLightbox();
-      });
-      
-      document.addEventListener('keydown', (event) => {
-        if (!lightbox.classList.contains('is-open')) return;
-        if (event.key === 'Escape') closeLightbox();
-        if (event.key === 'ArrowLeft') showPrev();
-        if (event.key === 'ArrowRight') showNext();
-      });
-
-      const railNext = document.querySelector('.rail-next');
-      const railPrev = document.querySelector('.rail-prev');
-      const railTrack = document.querySelector('.rail-track');
-      
-      if (railNext && railTrack) {
-        railNext.addEventListener('click', () => {
-          if (window.innerWidth > 720) {
-            railTrack.scrollBy({ top: 350, behavior: 'smooth' });
-          } else {
-            railTrack.scrollBy({ left: 350, behavior: 'smooth' });
-          }
-        });
-      }
-      
-      if (railPrev && railTrack) {
-        railPrev.addEventListener('click', () => {
-          if (window.innerWidth > 720) {
-            railTrack.scrollBy({ top: -350, behavior: 'smooth' });
-          } else {
-            railTrack.scrollBy({ left: -350, behavior: 'smooth' });
-          }
-        });
-      }
-    })();
-  </script>
-</body>
-</html>
+          requestAnimationFrame(() => lightbox
