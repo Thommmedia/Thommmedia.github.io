@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Boekenlegger Effect & Fixes --- */
+/* --- Mobile Layout - Boekenlegger Effect Volledig Gefixt --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -536,28 +536,28 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Container van de secties */
+  /* Container van de secties: Verhoogde min-height zodat lange tekst NOOIT klem zit */
   .scene {
     height: 100vh;
-    min-height: 600px;
+    min-height: 650px; 
     display: flex;
     flex-direction: column;
     background: #10100f;
     position: relative;
   }
   
-  /* OVERLAP-FIX: Trek de volgende sectie veel verder omhoog zodat de lege zwarte ruimte wordt bedekt */
-  main > section + section {
-    margin-top: -15vh;
+  /* OVERLAP-FIX: Trek de volgende sectie omhoog, BEHALVE de contact sectie */
+  main > section + section:not(.contact) {
+    margin-top: -12vh;
   }
   
-  /* CROP-FIX: Foto's vullen nu de bovenste 38% ipv 42% (iets horizontaler afgesneden) */
+  /* CROP-FIX: Foto's vullen nu 36% (iets horizontaler afgesneden voor extra tekst-ruimte) */
   .scene-image {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 38vh;
+    height: 36vh;
     width: 100%;
     transform: none;
     z-index: 2; /* Ligt OVER de tekst-kaart heen (behalve bij de Hero) */
@@ -568,19 +568,21 @@ body.lightbox-open { overflow: hidden; }
     display: none; 
   }
   
-  /* De Boekenlegger / Tekst-kaart per sectie */
+  /* De Boekenlegger / Tekst-kaart per sectie (Secties 2 t/m 4) */
   .scene-content {
     position: relative;
-    z-index: 1; /* Ligt VERBORGEN onder de foto van 38vh */
+    z-index: 1; /* Ligt VERBORGEN onder de foto van 36vh */
     margin-top: 25vh; /* Begint bewust al hoger achter de foto */
     margin-left: 8px; 
     margin-right: 8px;
     width: calc(100% - 16px);
     flex: 1; 
-    padding: 16vh 24px 115px !important; 
     
-    /* ECHTER Liquid Glass: Transparanter met donkere randen boven en onder */
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(16,16,15,0.15) 15%, rgba(16,16,15,0.15) 85%, rgba(0,0,0,0.9) 100%);
+    /* FIX: Top-padding enorm gereduceerd (was 16vh, is nu 45px). Hierdoor krijgt de tekst véél meer ruimte! */
+    padding: 45px 24px calc(125px + 12vh) !important; 
+    
+    /* Liquid Glass met donkere schaduw aan boven- en onderkant (Boekenlegger illusie) */
+    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(16,16,15,0.2) 15%, rgba(16,16,15,0.2) 85%, rgba(0,0,0,0.85) 100%);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     
@@ -592,11 +594,11 @@ body.lightbox-open { overflow: hidden; }
     transform: none !important;
     justify-content: flex-start;
     
-    /* SCROLL-FIX: Overflow is hidden (of verwijderd), tekst is gefixeerd en stuitert niet meer intern */
+    /* SCROLL-FIX: Tekst stuitert niet meer intern */
     overflow: hidden; 
   }
   
-  /* Uitzondering voor Hero-sectie: Ligt BOVEN de foto, tekst is gecentreerd, heeft wel ronde hoeken */
+  /* Uitzondering voor Hero-sectie: EXACT als je screenshot (Links uitgelijnd, helder glas, bovenop de foto) */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -604,13 +606,21 @@ body.lightbox-open { overflow: hidden; }
   
   .scene-one .scene-content {
     z-index: 2; /* Ligt over de hero foto heen */
-    margin-top: 34vh;
+    margin-top: 32vh;
     padding-top: 45px !important;
-    border-radius: 28px 28px 0 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    background: linear-gradient(180deg, rgba(16, 16, 15, 0) 0%, rgba(16, 16, 15, 0.15) 15%, rgba(16, 16, 15, 0.15) 85%, rgba(0, 0, 0, 0.9) 100%);
-    align-items: center;
-    text-align: center;
+    border-radius: 24px 24px 0 0;
+    
+    /* Schoon, helder glas zonder de donkere boekenlegger randen */
+    background: rgba(16, 16, 15, 0.65); 
+    
+    /* Alignering direct zoals in het screenshot */
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  /* Verberg 'Scroll to explore' pijl op mobiel, net als in het screenshot */
+  .scene-one .next {
+    display: none; 
   }
   
   .scene h1, h2 {
@@ -644,11 +654,11 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Frame getal staat veilig bovenaan de 15vh overlap-rand */
+  /* Frame getal staat veilig bovenaan de 12vh overlap-rand */
   .frame-number {
     position: absolute;
     right: 24px;
-    bottom: calc(125px + 15vh); 
+    bottom: calc(125px + 12vh); 
     margin: 0;
     z-index: 3;
   }
@@ -659,7 +669,18 @@ body.lightbox-open { overflow: hidden; }
     line-height: 1.5;
   }
 
+  /* --- FIX OVERGANG NAAR CONTACTPAGINA --- */
+  
+  /* Sectie 5 ('What I do') krijgt GEEN donkere schaduw aan de onderkant, anders botst dit lelijk met groen */
+  .scene-five .scene-content {
+    background: rgba(16, 16, 15, 0.65); /* Schoon glas, net als de hero */
+    padding-bottom: 125px !important; /* Geen overlap-padding nodig want er komt niks meer onder */
+  }
+  
+  /* Contact Sectie strak eronder, zonder negatieve margins of rare overlaps */
   .contact {
+    margin-top: 0 !important; 
+    z-index: 10;
     height: 100vh;
     min-height: 550px;
     padding: 0;
@@ -782,4 +803,3 @@ body.lightbox-open { overflow: hidden; }
     width: 100%;
   }
 }
-
