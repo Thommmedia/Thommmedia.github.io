@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Echte Liquid Glass Boekenlegger per Sectie --- */
+/* --- Mobile Layout - Boekenlegger Effect Volledig Gefixt --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -536,6 +536,7 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
+  /* Container - We trekken elke volgende sectie over de vorige heen (boekenlegger-bodem) */
   .scene {
     height: 100vh;
     min-height: 600px;
@@ -545,7 +546,11 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
-  /* Foto vult de bovenste 42% en ligt fysiek BOVENOP de boekenlegger */
+  .scene + .scene {
+    margin-top: -6vh; /* Cruciaal: Dit schuift de volgende foto exact over de onderkant van je glazen blok */
+  }
+  
+  /* Alle foto's: Staan altijd BOVENOP de glazen blokken (behalve bij de Hero) */
   .scene-image {
     position: absolute;
     top: 0;
@@ -554,32 +559,41 @@ body.lightbox-open { overflow: hidden; }
     height: 42vh;
     width: 100%;
     transform: none;
-    z-index: 2; /* Ligt OVER het glas heen, zodat de bovenkant strak onder de foto schuift */
+    z-index: 2; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.65); /* Zorgt dat de foto een schaduw werpt op het glas eronder */
+  }
+  
+  /* Uitzondering voor de Hero foto (die ligt ONDER het glas) */
+  .scene-one .scene-image {
+    z-index: 1;
+    box-shadow: none;
   }
   
   .shade {
     display: none; 
   }
   
-  /* De Boekenlegger / Liquid Glass Kaart per sectie */
+  /* Alle glazen blokken (behalve Hero): Komen van ONDER de foto vandaan */
   .scene-content {
     position: relative;
-    z-index: 1; /* Ligt ONDER de foto, waardoor de foto netjes over de bovenrand van het glas valt */
-    margin-top: 36vh; /* Start hoger, zodat de bovenkant achter de foto verdwijnt als een boekenlegger */
+    z-index: 1; /* Ligt VERBORGEN onder de foto van de eigen sectie */
+    margin-top: 30vh; /* Begint veilig onder de 42vh hoge foto */
     margin-left: 8px; 
     margin-right: 8px;
     width: calc(100% - 16px);
     flex: 1; 
-    padding: 45px 24px 130px !important; 
-    /* Echte transparante Liquid Glass styling met subtiele glazige gradiënt */
-    background: linear-gradient(180deg, rgba(16, 16, 15, 0) 0%, rgba(16, 16, 15, 0.45) 15%, rgba(16, 16, 15, 0.65) 100%), rgba(16, 16, 15, 0.55);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    /* Ruimte toegevoegd voor de -6vh sectie-overlap, zodat tekst nooit achter de volgende foto wegvalt */
+    padding: 16vh 24px calc(130px + 6vh) !important; 
+    
+    /* ECHTER Liquid Glass: Transparanter met donkere boekenlegger-schaduwen aan de randen */
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(16,16,15,0.15) 15%, rgba(16,16,15,0.15) 85%, rgba(0,0,0,0.9) 100%);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 28px 28px 0 0; /* Ronde hoeken boven, strak onderin */
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    border-radius: 0; /* Geen ronde hoeken meer, komt strak onder de foto uit */
+    box-shadow: none;
     box-sizing: border-box;
     transform: none !important;
     justify-content: flex-start;
@@ -590,8 +604,14 @@ body.lightbox-open { overflow: hidden; }
     display: none;
   }
   
-  /* Hero-sectie (scene 1) strak in het midden uitgelijnd */
+  /* Uitzondering voor Hero-sectie (Rode Cirkel): Heeft ronde hoeken, ligt BOVEN de foto, tekst gecentreerd */
   .scene-one .scene-content {
+    z-index: 2; /* Ligt over de hero foto heen */
+    margin-top: 36vh;
+    padding-top: 45px !important;
+    border-radius: 28px 28px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(180deg, rgba(16, 16, 15, 0) 0%, rgba(16, 16, 15, 0.15) 15%, rgba(16, 16, 15, 0.15) 85%, rgba(0, 0, 0, 0.9) 100%);
     align-items: center;
     text-align: center;
   }
@@ -627,10 +647,11 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
+  /* Getal staat altijd veilig boven de overlap van de volgende foto */
   .frame-number {
     position: absolute;
     right: 24px;
-    bottom: 130px; 
+    bottom: calc(130px + 3vh); 
     margin: 0;
     z-index: 3;
   }
