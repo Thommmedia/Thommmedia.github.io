@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Hero Finaal --- */
+/* --- Mobile Layout - Hero Finaal Getuned --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -546,6 +546,11 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
+  /* Maakt de allereerste hero-sectie visueel een tikje korter aan de onderkant */
+  .scene-one {
+    min-height: 88vh; 
+  }
+  
   /* OVERLAP: Trek de volgende sectie omhoog om onder het huidige glazen blok te schuiven */
   main > section.scene + section.scene {
     margin-top: -12vh; 
@@ -558,13 +563,13 @@ body.lightbox-open { overflow: hidden; }
     box-shadow: 0 -10px 30px rgba(0,0,0,0.5); 
   }
   
-  /* FOTO'S: Hoogte vergroot naar 45vh om achter het glas tot de groene lijn te reiken */
+  /* FOTO'S: 45vh hoog, reikt nu perfect tot de groene streep */
   .scene-image {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 45vh; /* Aangepast van 38vh naar 45vh */
+    height: 45vh; 
     width: 100%;
     transform: none;
     z-index: 2; 
@@ -602,7 +607,7 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden; 
   }
   
-  /* HERO SECTIE */
+  /* HERO SECTIE: Tekst omhoog getrokken met flex-start & kortere top-padding */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -611,27 +616,29 @@ body.lightbox-open { overflow: hidden; }
   .scene-one .scene-content {
     z-index: 2; 
     margin-top: 34vh;
-    padding-top: 65px !important;
-    padding-bottom: 12vh !important; 
+    padding-top: 35px !important; /* Blok flink naar boven getrokken! */
+    padding-bottom: 8vh !important; /* Minder lege ruimte aan de bodem */
     border-radius: 20px 20px 0 0; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     background: linear-gradient(180deg, rgba(16, 16, 15, 0.2) 0%, rgba(16, 16, 15, 0.45) 20%, rgba(16, 16, 15, 0.55) 100%);
+    
     align-items: center; 
     text-align: center;
+    justify-content: flex-start; /* Essentieel: trekt de hele tekstgroep naar het plafond van het glas */
   }
   
-  /* H1 In Hero is een stuk groter gemaakt */
+  /* H1 In Hero is aanzienlijk groter gemaakt, de overline en naam blijven hun oude grootte behouden */
   .scene-one h1 {
-    font-size: clamp(58px, 15vw, 72px);
+    font-size: clamp(68px, 17.5vw, 84px);
   }
   
-  /* Scroll to explore verplaatst naar de paarse ruimte strak onder de byline */
+  /* Scroll to explore sluit strakker aan onder je naam */
   .scene-one .byline {
-    margin-bottom: 25px; /* In plaats van 40px om hem strakker te trekken */
+    margin-bottom: 25px; 
   }
   
   .scene-one .next {
-    margin-top: 0; /* Geen lege ruimte erboven */
+    margin-top: 0; 
     margin-bottom: 0; 
   }
   
