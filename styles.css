@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Perfect Gecentreerd op 100% van de blokken --- */
+/* --- Mobile Layout --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -594,11 +594,6 @@ body.lightbox-open { overflow: hidden; }
     width: calc(100% - 32px); 
     flex: 1; 
     
-    /* EXACTE CENTRERING PER SECTIE:
-       - Top overlap is 19vh (45vh image minus 26vh margin-top).
-       - Bottom overlap is 112px (door de vaste galerij).
-       Beide kanten krijgen exact deze overlap + 25px ademruimte,
-       waardoor de tekst feilloos in het *zichtbare* zwarte vlak centreert. */
     padding: calc(19vh + 25px) 24px calc(112px + 25px) !important; 
     
     background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(16,16,15,0.4) 15%, rgba(16,16,15,0.4) 85%, rgba(0,0,0,0.85) 100%);
@@ -616,7 +611,7 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden; 
   }
   
-  /* HERO SECTIE */
+  /* HERO SECTIE: Oplossing toegepast - Weer netjes naar de bovenkant getrokken */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -625,9 +620,7 @@ body.lightbox-open { overflow: hidden; }
   .scene-one .scene-content {
     z-index: 2; 
     margin-top: 34vh;
-    /* Top overlap is 11vh (45vh image - 34vh margin). Bottom overlap is 12vh (volgende sectie).
-       Symmetrische verhoudingen trekken het 100% in het midden. */
-    padding-top: calc(11vh + 25px) !important; 
+    padding-top: 35px !important; /* Marge weer korter om hem omhoog te trekken */
     padding-bottom: calc(12vh + 25px) !important; 
     border-radius: 20px 20px 0 0; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -635,7 +628,7 @@ body.lightbox-open { overflow: hidden; }
     
     align-items: center; 
     text-align: center;
-    justify-content: center; 
+    justify-content: flex-start; /* Essentieel: trekt DIT specifieke tekstblok weer naar de top zonder de rest te beïnvloeden */
   }
   
   .scene-one h1 {
@@ -715,7 +708,7 @@ body.lightbox-open { overflow: hidden; }
   .contact-content {
     justify-content: center;
     padding-top: 20px;
-    padding-bottom: 112px; /* Zorgt voor perfecte centrering boven de vaste fotogalerij (112px) */
+    padding-bottom: 112px;
   }
   
   .contact h2 {
