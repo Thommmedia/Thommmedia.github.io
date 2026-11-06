@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Hero Finaal Getuned --- */
+/* --- Mobile Layout - Overlines verborgen op vervolgpagina's --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -546,7 +546,6 @@ body.lightbox-open { overflow: hidden; }
     position: relative;
   }
   
-  /* Maakt de allereerste hero-sectie visueel een tikje korter aan de onderkant */
   .scene-one {
     min-height: 88vh; 
   }
@@ -563,7 +562,7 @@ body.lightbox-open { overflow: hidden; }
     box-shadow: 0 -10px 30px rgba(0,0,0,0.5); 
   }
   
-  /* FOTO'S: 45vh hoog, reikt nu perfect tot de groene streep */
+  /* FOTO'S */
   .scene-image {
     position: absolute;
     top: 0;
@@ -577,6 +576,11 @@ body.lightbox-open { overflow: hidden; }
   }
   
   .shade {
+    display: none; 
+  }
+  
+  /* Verberg de 'extra titels' (overlines) voor alle secties BEHALVE de eerste hero. */
+  main > section:not(.scene-one) .overline {
     display: none; 
   }
   
@@ -607,7 +611,7 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden; 
   }
   
-  /* HERO SECTIE: Tekst omhoog getrokken met flex-start & kortere top-padding */
+  /* HERO SECTIE */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -616,23 +620,21 @@ body.lightbox-open { overflow: hidden; }
   .scene-one .scene-content {
     z-index: 2; 
     margin-top: 34vh;
-    padding-top: 35px !important; /* Blok flink naar boven getrokken! */
-    padding-bottom: 8vh !important; /* Minder lege ruimte aan de bodem */
+    padding-top: 35px !important; 
+    padding-bottom: 8vh !important; 
     border-radius: 20px 20px 0 0; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     background: linear-gradient(180deg, rgba(16, 16, 15, 0.2) 0%, rgba(16, 16, 15, 0.45) 20%, rgba(16, 16, 15, 0.55) 100%);
     
     align-items: center; 
     text-align: center;
-    justify-content: flex-start; /* Essentieel: trekt de hele tekstgroep naar het plafond van het glas */
+    justify-content: flex-start; 
   }
   
-  /* H1 In Hero is aanzienlijk groter gemaakt, de overline en naam blijven hun oude grootte behouden */
   .scene-one h1 {
     font-size: clamp(68px, 17.5vw, 84px);
   }
   
-  /* Scroll to explore sluit strakker aan onder je naam */
   .scene-one .byline {
     margin-bottom: 25px; 
   }
@@ -673,7 +675,7 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* FRAME NUMBERS: Precies op de paarse pijl */
+  /* FRAME NUMBERS */
   .frame-number {
     position: absolute;
     right: 24px;
@@ -713,7 +715,7 @@ body.lightbox-open { overflow: hidden; }
     font-size: clamp(52px, 14vw, 72px);
   }
 
-  /* Zwarte vaste galerij footer - 100% onveranderd */
+  /* Zwarte vaste galerij footer */
   .portfolio-rail {
     position: fixed;
     top: auto;
