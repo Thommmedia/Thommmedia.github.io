@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Overlines verborgen op vervolgpagina's --- */
+/* --- Mobile Layout - Overlines verborgen op vervolgpagina's & Tekst perfect gecentreerd --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -594,7 +594,12 @@ body.lightbox-open { overflow: hidden; }
     width: calc(100% - 32px); 
     flex: 1; 
     
-    padding: calc(12vh + 45px) 24px calc(12vh + 112px + 5px) !important; 
+    /* EXACTE CENTRERING: 
+       - Top overlap is 19vh (45vh image minus 26vh margin-top). 
+       - Bottom overlap is 12vh (volgende sectie) + 112px (galerij).
+       Beide kanten krijgen evenveel padding (+25px) 
+       zodat de flexbox de tekst 100% perfect in het ZICHTBARE midden uitlijnt! */
+    padding: calc(19vh + 25px) 24px calc(12vh + 112px + 25px) !important; 
     
     background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(16,16,15,0.4) 15%, rgba(16,16,15,0.4) 85%, rgba(0,0,0,0.85) 100%);
     backdrop-filter: blur(25px);
@@ -611,7 +616,7 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden; 
   }
   
-  /* HERO SECTIE */
+  /* HERO SECTIE: Onaangetast gebleven zoals we het perfect hadden afgesteld */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
