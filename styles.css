@@ -515,7 +515,7 @@ body.lightbox-open { overflow: hidden; }
   }
 }
 
-/* --- Mobile Layout - Finaal Gecentreerd, Exacte Breedte & 20px Naar Beneden --- */
+/* --- Mobile Layout - Finaal: Gele gat weg, Grotere Hero/Contact, Nummers op Paarse Pijl --- */
 @media (max-width: 720px) {
   .shell {
     padding-left: 20px;
@@ -575,7 +575,7 @@ body.lightbox-open { overflow: hidden; }
     display: none; 
   }
   
-  /* DE BOEKENLEGGER (Glazen Blokken) - Nu met 20px neerwaartse shift (Top padding +20px, Bottom padding -20px) */
+  /* DE BOEKENLEGGER (Glazen Blokken) */
   .scene-content {
     position: relative;
     z-index: 1; 
@@ -602,7 +602,7 @@ body.lightbox-open { overflow: hidden; }
     overflow: hidden; 
   }
   
-  /* HERO SECTIE: EXACT zoals IMG_6641_2.PNG (Ronde hoeken, padding, 'Scroll' onderaan), ook 20px verlaagd */
+  /* HERO SECTIE (IMG_6666): Gecentreerd, Tekst Groter, Geen geel gapend gat meer! */
   .scene-one .scene-image {
     z-index: 1;
     box-shadow: none;
@@ -611,19 +611,29 @@ body.lightbox-open { overflow: hidden; }
   .scene-one .scene-content {
     z-index: 2; 
     margin-top: 34vh;
+    /* Grote padding-bottom weggehaald zodat de doos netjes om de inhoud sluit */
     padding-top: 65px !important;
-    padding-bottom: calc(112px + 10px) !important; 
+    padding-bottom: 12vh !important; 
     border-radius: 20px 20px 0 0; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     background: linear-gradient(180deg, rgba(16, 16, 15, 0.2) 0%, rgba(16, 16, 15, 0.45) 20%, rgba(16, 16, 15, 0.55) 100%);
-    justify-content: flex-start;
+    
+    align-items: center; /* Gecentreerd */
+    text-align: center;
   }
   
+  /* Specifieke regel om de Hero tekst groter te maken (zonder de rest te breken) */
+  .scene-one h1 {
+    font-size: clamp(46px, 12vw, 60px);
+  }
+  
+  /* 'Scroll to explore' sluit nu netjes aan onder de naam, verwijdert het gele gat */
   .scene-one .next {
-    margin-top: auto; 
-    margin-bottom: 20px; 
+    margin-top: 40px; 
+    margin-bottom: 0; 
   }
   
+  /* Standaard font size voor de andere secties (ongewijzigd) */
   .scene h1, h2 {
     font-size: clamp(32px, 8.5vw, 44px); 
     word-break: keep-all;
@@ -655,21 +665,20 @@ body.lightbox-open { overflow: hidden; }
     margin-top: 12px;
   }
   
-  /* Frame getallen - exact 20px meegeschoven naar beneden */
+  /* FRAME NUMBERS: Precies op de paarse pijl (zwevend 25px bóven de binnenkomende 12vh foto) */
   .frame-number {
     position: absolute;
-    right: 32px;
-    bottom: calc(112px + 12vh + 5px); 
+    right: 24px;
+    bottom: calc(12vh + 25px); /* 12vh overlap + 25px ademruimte = Paarse pijl locatie! */
     margin: 0;
     z-index: 3;
   }
   
-  .scene-one .frame-number {
-    bottom: calc(112px + 12vh + 30px);
-  }
+  /* Geen aparte regel meer nodig voor scene-one, die gebruikt nu dezelfde paarse-pijl positie */
   
+  /* Contact heeft geen 12vh overlap, maar 112px vaste balk */
   .contact .frame-number {
-    bottom: calc(112px + 10px);
+    bottom: calc(112px + 25px);
   }
   
   .service-line {
@@ -678,7 +687,7 @@ body.lightbox-open { overflow: hidden; }
     line-height: 1.5;
   }
 
-  /* Contact Blok - Ook visueel exact 20px naar beneden geschoven */
+  /* Contact Blok */
   .contact {
     min-height: 100vh;
     height: auto;
@@ -693,6 +702,11 @@ body.lightbox-open { overflow: hidden; }
     justify-content: center;
     padding-top: 20px;
     padding-bottom: 92px; 
+  }
+  
+  /* Maak de "Let's collaborate" tekst aanzienlijk groter (IMG_6668) */
+  .contact h2 {
+    font-size: clamp(52px, 14vw, 72px);
   }
 
   /* Zwarte vaste galerij footer - 100% onveranderd */
